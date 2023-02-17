@@ -1,18 +1,17 @@
 import React from "react"
 
 import String from "./String"
-// import Fret from "./Fret"
-import { noteCodeLookup } from "../data/data"
+import { noteCodeLookup } from "../data/notes"
 
 export default function Fretboard(){
     return (
         <div id="fretboard">
-            <String pitch={noteCodeLookup['E']}/>
-            <String pitch={noteCodeLookup['B']}/>
-            <String pitch={noteCodeLookup['G']}/>
-            <String pitch={noteCodeLookup['D']}/>
-            <String pitch={noteCodeLookup['A']}/>
-            <String pitch={noteCodeLookup['E']}/>
+            <String pitch={noteCodeLookup['E']} numberOfFrets={24}/>
+            <String pitch={noteCodeLookup['B']} numberOfFrets={24}/>
+            <String pitch={noteCodeLookup['G']} numberOfFrets={24}/>
+            <String pitch={noteCodeLookup['D']} numberOfFrets={24}/>
+            <String pitch={noteCodeLookup['A']} numberOfFrets={24}/>
+            <String pitch={noteCodeLookup['E']} numberOfFrets={24}/>
         </div>
     )
 }
