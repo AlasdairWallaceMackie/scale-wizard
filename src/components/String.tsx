@@ -1,7 +1,7 @@
 import React from "react"
 
-import Fret from "./Fret" //Change this to 'Fret'
-
+import Fret from "./Fret"
+import {nanoid} from "nanoid"
 import { MAX_NUMBER_OF_NOTES, noteCodeLookup, flatToSharpConversion } from "../data/notes"
 
 type Props = {
@@ -30,7 +30,11 @@ export default function String(props: Props){
     }
 
     const fretElements = frets.map(({pitch, octave}) => (
-        <Fret pitchCode={pitch} octave={octave}/>
+        <Fret
+            key={nanoid()}
+            pitchCode={pitch}
+            octave={octave}
+        />
     ))
 
 
