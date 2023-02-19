@@ -3,13 +3,14 @@ import React from "react"
 import { noteLookup } from "../data/notes"
 
 type Props = {
-    pitch: number
+    pitchCode: number,
+    octave: number,
 }
 
 export default function Fret(props: Props){
-    const pitchName = noteLookup[props.pitch]
+    const pitchName = noteLookup[props.pitchCode]
 
     return(
-        <p>|{pitchName}{pitchName.length < 2 ? <span>&nbsp;</span> : <></>}</p>
+        <p>{pitchName}{props.octave}{pitchName.length < 2 ? <span>&nbsp;</span> : <></>}|</p>
     )
 }
