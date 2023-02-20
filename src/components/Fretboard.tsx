@@ -1,7 +1,6 @@
 import React from "react"
 
 import String from "./String"
-import { noteCodeLookup } from "../data/notes"
 import tunings from "../data/tunings"
 
 export default function Fretboard(){
@@ -11,7 +10,7 @@ export default function Fretboard(){
     ))
 
     return (
-        <div id="fretboard">
+        <div id="fretboard" className="container">
             {stringElements}
         </div>
     )
