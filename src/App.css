@@ -1,3 +1,8 @@
 .string{
     display: flex;
 }
+
+.open-fret{
+    font-weight: bold;
+    outline: 3px solid black;
+}
