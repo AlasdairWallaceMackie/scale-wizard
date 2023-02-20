@@ -2,6 +2,7 @@ import React from "react"
 
 import Header from "./components/Header"
 import Fretboard from "./components/Fretboard"
+import Controls from "./components/Controls"
 
 import tunings from "./data/tunings"
 
@@ -16,6 +17,7 @@ export default function App(){
                 numberOfFrets={numberOfFrets}
                 tuning={currentTuning}
             />
+            <Controls />
         </main>
     )
 }
