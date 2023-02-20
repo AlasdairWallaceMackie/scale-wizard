@@ -20,27 +20,27 @@ export default function String(props: Props){
 
     let frets: {pitch: number, octave: number}[] = []
     let fretPitch: number = noteCodeLookup[pitchNote]
-    for (var i=1; i<=props.numberOfFrets; i++){
-        fretPitch++
+    for (var i=0; i<=props.numberOfFrets; i++){
         if (fretPitch > MAX_NUMBER_OF_NOTES){
             fretPitch = 1
             octave++
         }
         frets.push({pitch: fretPitch, octave: octave})
+        fretPitch++
     }
 
-    const fretElements = frets.map(({pitch, octave}) => (
+    const fretElements = frets.map(({pitch, octave}, index) => (
         <Fret
             key={nanoid()}
             pitchCode={pitch}
             octave={octave}
+            openFret={index===0}
         />
     ))
 
 
     return (
-        <div className="string">
-            <strong>{pitchNote}|&nbsp;</strong>
+        <div className="string row">
             {fretElements}
         </div>
     )
