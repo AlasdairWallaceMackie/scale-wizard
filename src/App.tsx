@@ -1,5 +1,6 @@
 import React from "react"
 
+import Header from "./components/Header"
 import Fretboard from "./components/Fretboard"
 
 export default function App(){
@@ -7,7 +8,7 @@ export default function App(){
 
     return(
         <main className="p-3">
-            <h1 className="text-center">Scale Wizard</h1>
+            <Header />
             <Fretboard numberOfFrets={numberOfFrets}/>
         </main>
     )
