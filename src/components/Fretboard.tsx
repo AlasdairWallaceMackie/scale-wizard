@@ -3,15 +3,15 @@ import React from "react"
 import String from "./String"
 import FretMarkers from "./FretMarkers"
 
-import tunings from "../data/tunings"
+import { Tuning } from "../d"
 
 type Props = {
     numberOfFrets: number
+    tuning: Tuning
 }
 
 export default function Fretboard(props: Props){
-    const [currentTuning, setCurrentTuning] = React.useState(tunings[0])
-    const stringElements = currentTuning.notes.map((note, index) => (
+    const stringElements = props.tuning.notes.map((note, index) => (
         <String key={index} pitch={note}/>
     ))
 
