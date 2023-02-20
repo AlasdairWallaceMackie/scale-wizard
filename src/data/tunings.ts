@@ -1,136 +1,124 @@
 const tunings = [
     {
         name: "Standard",
+        description: "The most common tuning for six-string guitars, used in most styles of music.",
         notes: [
-            "E2",
-            "A2",
-            "D3",
-            "G3",
+            "E4",
             "B3",
-            "E4"
-        ],
-        description: "The most common tuning for six-string guitars, with the lowest string tuned to E2."
+            "G3",
+            "D3",
+            "A2",
+            "E2"
+        ]
     },
     {
         name: "Drop D",
+        description: "A popular tuning for rock and metal music, with a lower and heavier sound than standard tuning.",
         notes: [
-            "D2",
-            "A2",
-            "D3",
-            "G3",
+            "E4",
             "B3",
-            "E4"
-        ],
-        description: "Similar to Standard tuning, but with the lowest string tuned down to D2."
+            "G3",
+            "D3",
+            "A2",
+            "D2"
+        ]
     },
     {
-        name: "Open G",
+        name: "Half Step Down",
+        description: "A tuning where each string is lowered by one half-step, creating a slightly darker and heavier sound than standard tuning.",
         notes: [
-            "D2",
+            "Eb4",
+            "Bb3",
+            "Gb3",
+            "Db3",
+            "Ab2",
+            "Eb2"
+        ]
+    },
+    {
+        name: "Full Step Down",
+        description: "A tuning where each string is lowered by one full step, creating an even darker and heavier sound than half-step down tuning.",
+        notes: [
+            "D4",
+            "A3",
+            "F3",
+            "C3",
             "G2",
-            "D3",
-            "G3",
-            "B3",
-            "D4"
-        ],
-        description: "A popular tuning for slide guitar, with the guitar tuned to a G major chord."
+            "D2"
+        ]
     },
     {
         name: "Drop C",
+        description: "A popular tuning for heavy music, where the sixth string is lowered to C and rest of the strings are lowered by one full step.",
         notes: [
-            "C2",
-            "G2",
-            "C3",
-            "F3",
+            "D4",
             "A3",
-            "D4"
-        ],
-        description: "Commonly used in heavy metal and hard rock music, with all strings tuned down a whole step and the lowest string tuned down an additional step to C2."
-    },
-        {
-        name: "Double Drop D",
-        notes: [
-            "D2",
-            "A2",
-            "D3",
-            "G3",
-            "B3",
-            "D4"
-        ],
-        description: "Similar to Drop D tuning, but with the highest string tuned down to D4 as well."
+            "F3",
+            "C3",
+            "G2",
+            "C2"
+        ]
     },
     {
         name: "Open D",
+        description: "An open tuning for playing slide guitar, popularized by blues and country musicians.",
         notes: [
-            "D2",
-            "A2",
-            "D3",
+            "D4",
+            "A3",
             "F#3",
-            "A3",
-            "D4"
-        ],
-        description: "Another popular tuning for slide guitar, with the guitar tuned to a D major chord."
+            "D3",
+            "A2",
+            "D2"
+        ]
     },
     {
-        name: "Eb Standard",
+        name: "Open G",
+        description: "Another popular open tuning for slide guitar, used by many rock and blues guitarists.",
         notes: [
-            "Eb2",
-            "Ab2",
-            "Db3",
-            "Gb3",
-            "Bb3",
-            "Eb4"
-        ],
-        description: "All strings are tuned down a half step, making the lowest string Eb2."
-    },
-    {
-        name: "D Standard",
-        notes: [
-            "D2",
+            "D4",
+            "B3",
+            "G3",
+            "D3",
             "G2",
-            "C3",
-            "F3",
-            "A3",
-            "D4"
-        ],
-        description: "All strings are tuned down a whole step, making the lowest string D2."
+            "D2"
+        ]
     },
     {
-        name: "Db Standard",
+        name: "C# Standard",
+        description: "A tuning where each string is tuned one half-step higher than Standard tuning.",
         notes: [
-            "Db2",
-            "Gb2",
-            "B2",
+            "C#4",
+            "G#3",
             "E3",
-            "Ab3",
-            "Db4"
-        ],
-        description: "All strings are tuned down a half step twice, making the lowest string Db2."
+            "B2",
+            "F#2",
+            "C#2"
+        ]
     },
     {
         name: "C Standard",
+        description: "A tuning where each string is tuned two full-steps lower than Standard tuning.",
         notes: [
-            "C2",
-            "F2",
-            "Bb2",
-            "Eb3",
+            "C4",
             "G3",
-            "C4"
-        ],
-        description: ""
+            "Eb3",
+            "Bb2",
+            "F2",
+            "C2"
+        ]
     },
     {
         name: "B Standard",
+        description: "A tuning where each string is tuned two and a half steps lower than Standard tuning.",
         notes: [
-            "B2",
-            "E2",
-            "A2",
-            "D3",
+            "B3",
             "F#3",
-            "B4"
-        ],
-        description: ""
+            "D3",
+            "A2",
+            "E2",
+            "B1"
+        ]
     }
-]
+];
 
 export default tunings
