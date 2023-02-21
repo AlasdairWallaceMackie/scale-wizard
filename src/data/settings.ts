@@ -1,0 +1,1 @@
+export const SHARP_FLAT_DEFAULT: "sharp"|"flat" = "sharp"
