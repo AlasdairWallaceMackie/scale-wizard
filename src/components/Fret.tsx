@@ -13,7 +13,7 @@ export default function Fret(props: Props){
     const className = props.openFret ? "open-fret" : "" 
 
     return(
-        <div className={`col border ${className}`}>
+        <div className={`fret col border py-0 pe-0 ps-1 ${className}`}>
             {pitchName}{props.octave}
         </div>
     )
