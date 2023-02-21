@@ -12,8 +12,8 @@ export default function FretMarkers(props: Props){
             list.push(getDots(i))
         }
 
-        return list.map(fret => (
-            <div className="col text-center small">{fret}</div>
+        return list.map((fret, index) => (
+            <div key={index} className="fret-marker col text-center small">{fret}</div>
         ))
     }
 
