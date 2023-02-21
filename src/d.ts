@@ -3,3 +3,9 @@ export interface Tuning {
     description: string,
     notes: string[]
 }
+
+export interface Scale {
+    name: string,
+    intervals: string[],
+    description: string,
+}
