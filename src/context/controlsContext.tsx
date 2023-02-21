@@ -16,51 +16,39 @@ function ControlsContextProvider(props: any){
     const [currentScale, setCurrentScale] = React.useState(scales[0])
     const [sharpOrFlat, setSharpOrFlat] = React.useState<"sharp"|"flat">(SHARP_FLAT_DEFAULT)
 
-
-    function handleChangeTuning(event: React.ChangeEvent<HTMLSelectElement>){
-        const value: number = parseInt(event.currentTarget.value)
-        setCurrentTuning(tunings[value])
-    }
-
-    function handleChangeKey(event: React.ChangeEvent<HTMLSelectElement>){
-        const value: number = parseInt(event.currentTarget.value)
-        setCurrentKey(value)
-    }
-
-    function handleChangeScale(event: React.ChangeEvent<HTMLSelectElement>){
-        const value: number = parseInt(event.currentTarget.value)
-        setCurrentScale(scales[value])
-    }
-
-    function handleChangeNumberOfFrets(event: React.ChangeEvent<HTMLSelectElement>){
-        const value: number = parseInt(event.currentTarget.value)
-        setNumberOfFrets(value)
-    }
-    
-    function toggleSharpFlat(){
-        setSharpOrFlat(prevState => prevState === "sharp" ? "flat" : "sharp")
-    }
-
     const contextData: ControlsContextInterface = {
-        numberOfFrets: {
-            value: numberOfFrets,
-            handler: handleChangeNumberOfFrets
-        },
         currentTuning: {
             value: currentTuning,
-            handler: handleChangeTuning
+            handler: (event: React.ChangeEvent<HTMLSelectElement>) => {
+                const value: number = parseInt(event.currentTarget.value)
+                setCurrentTuning(tunings[value])
+            }
         },
         currentKey: {
             value: currentKey,
-            handler: handleChangeKey
+            handler: (event: React.ChangeEvent<HTMLSelectElement>) => {
+                const value: number = parseInt(event.currentTarget.value)
+                setCurrentKey(value)
+            }
         },
         currentScale: {
             value: currentScale,
-            handler: handleChangeScale
+            handler: (event: React.ChangeEvent<HTMLSelectElement>) => {
+                const value: number = parseInt(event.currentTarget.value)
+                setCurrentScale(scales[value])
+            }
+        },
+        numberOfFrets: {
+            value: numberOfFrets,
+            handler: (event: React.ChangeEvent<HTMLSelectElement>) => {
+                const value: number = parseInt(event.currentTarget.value)
+                setNumberOfFrets(value)
+            }
         },
         sharpOrFlat: {
             value: sharpOrFlat,
-            handler: toggleSharpFlat
+            handler: () => {setSharpOrFlat(prevState => prevState === "sharp" ? "flat" : "sharp")
+            }
         },
     }
 
