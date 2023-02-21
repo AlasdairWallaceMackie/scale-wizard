@@ -39,6 +39,19 @@ const scales = [
         description: "A variation of the natural minor scale with a raised seventh degree, giving it a more exotic sound."
     },
     {
+        name: "Phrygian Dominant",
+        intervals: [ 
+            "Root",
+            "Minor 2nd",
+            "Major 3rd",
+            "Perfect 4th",
+            "Perfect 5th",
+            "Minor 6th",
+            "Minor 7th" 
+        ],
+        description: "A common scale used in Middle Eastern, Eastern European, and Jewish music, as well as in metal and other genres.",
+    },
+    {
         name: "Melodic Minor",
         intervals: [
             "Root",
