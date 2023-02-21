@@ -18,7 +18,7 @@ export default function String(props: Props){
     
     //If the note is written as flat, convert to sharp
     if (/[b]/.test(pitchNote))
-        pitchNote = flatToSharpConversion[pitchNote]
+        pitchNote = flatToSharpConversion(pitchNote)
 
     let frets: {pitch: number, octave: number}[] = []
     let fretPitch: number = noteCodeLookup[pitchNote]

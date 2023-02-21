@@ -23,18 +23,23 @@ export const noteLookup: {[key: number]: string} = {
 
 export const noteCodeLookup = flip(noteLookup)
 
-export const flatToSharpConversion: {[key: string]: string} = {
-    "Bb": "A#",
-    "Db": "C#",
-    "Eb": "D#",
-    "Gb": "F#",
-    "Ab": "G#",
+export function sharpToFlatConversion(note: string){
+    switch(note){
+        case "A#": return "Bb"
+        case "C#": return "Db"
+        case "D#": return "Eb"
+        case "F#": return "Gb"
+        case "G#": return "Ab"
+        default: return note
+    }
 }
-
-export const sharpToFlatConversion = {
-    "A#": "Bb",
-    "C#": "Db",
-    "D#": "Eb",
-    "F#": "Gb",
-    "G#": "Ab",
+export function flatToSharpConversion(note: string){
+    switch(note){
+        case "Bb": return "A#"
+        case "Db": return "C#"
+        case "Eb": return "D#"
+        case "Gb": return "F#"
+        case "Ab": return "G#"
+        default: return note
+    }
 }
