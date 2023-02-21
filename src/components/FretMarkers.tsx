@@ -27,7 +27,7 @@ export default function FretMarkers(props: Props){
 
 
     return (
-        <div id="fret-markers" className="row">
+        <div id="fret-markers" className="row flex-nowrap">
             {dotElements()}
         </div>
     )

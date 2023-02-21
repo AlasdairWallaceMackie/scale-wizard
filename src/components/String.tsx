@@ -42,7 +42,7 @@ export default function String(props: Props){
 
 
     return (
-        <div className="string row">
+        <div className="string row flex-nowrap">
             {fretElements}
         </div>
     )
