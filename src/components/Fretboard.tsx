@@ -1,24 +1,20 @@
 import React from "react"
 
+import { ControlsContext } from "../context/controlsContext"
 import String from "./String"
 import FretMarkers from "./FretMarkers"
 
-import { Tuning } from "../d"
+export default function Fretboard(){
+    const context = React.useContext(ControlsContext)
 
-type Props = {
-    numberOfFrets: number
-    tuning: Tuning
-}
-
-export default function Fretboard(props: Props){
-    const stringElements = props.tuning.notes.map((note, index) => (
+    const stringElements = context.currentTuning.value.notes.map((note, index) => (
         <String key={index} pitch={note}/>
     ))
 
     return (
         <div id="fretboard" className="container">
             {stringElements}
-            <FretMarkers numberOfFrets={props.numberOfFrets}/>
+            <FretMarkers numberOfFrets={context.numberOfFrets.value}/>
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import React from "react"
 
-import { SharpFlatContext } from "../context/sharpFlatContext"
+import { ControlsContext } from "../context/controlsContext"
 import { noteLookup, sharpToFlatConversion } from "../data/notes"
 
 type Props = {
@@ -10,14 +10,14 @@ type Props = {
 }
 
 export default function Fret(props: Props){
-    const sharpFlatContext = React.useContext(SharpFlatContext)
+    const context = React.useContext(ControlsContext)
 
     const pitchName = 
-        sharpFlatContext.sharpOrFlat === "sharp" ? 
+        context.sharpOrFlat.value === "sharp" ? 
         noteLookup[props.pitchCode] : 
         sharpToFlatConversion(noteLookup[props.pitchCode])
     
-        const className = props.openFret ? "open-fret" : "" 
+    const className = props.openFret ? "open-fret" : "" 
 
     return(
         <div className={`fret col border py-0 pe-0 ps-1 ${className}`}>

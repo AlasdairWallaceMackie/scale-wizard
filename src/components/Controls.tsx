@@ -1,21 +1,15 @@
 import React from "react"
 
-import { SharpFlatContext } from "../context/sharpFlatContext"
-import { Tuning, Scale } from "../d"
+import { ControlsContext } from "../context/controlsContext"
 import tunings from "../data/tunings"
 import scales from "../data/scales"
 import { noteLookup } from "../data/notes"
 
-type Props = {
-    setCurrentTuning: React.Dispatch<React.SetStateAction<Tuning>>,
-    currentKey: number,
-    setCurrentKey: React.Dispatch<React.SetStateAction<number>>,
-    currentScale: Scale
-    setCurrentScale: React.Dispatch<React.SetStateAction<Scale>>,
-}
+export default function Controls(){
+    const context = React.useContext(ControlsContext)
 
-export default function Controls(props: Props){
-    const sharpFlatContext = React.useContext(SharpFlatContext)
+
+
     const tuningOptionElements = tunings.map((tuning, index) => (
         <option key={index} value={index}>{tuning.name}</option>
     ))
@@ -25,24 +19,6 @@ export default function Controls(props: Props){
     const scaleOptionElements = scales.map((scale, index) => (
         <option key={index} value={index}>{scale.name}</option>
     ))
-
-    function handleChangeTuning(event: React.ChangeEvent<HTMLSelectElement>){
-        const value: number = parseInt(event.currentTarget.value)
-        props.setCurrentTuning(tunings[value])
-    }
-
-    function handleChangeKey(event: React.ChangeEvent<HTMLSelectElement>){
-        const value: number = parseInt(event.currentTarget.value)
-        props.setCurrentKey(value)
-    }
-
-    function handleChangeScale(event: React.ChangeEvent<HTMLSelectElement>){
-        const value: number = parseInt(event.currentTarget.value)
-        props.setCurrentScale(scales[value])
-    }
-
-
-
 
 
 
@@ -54,8 +30,8 @@ export default function Controls(props: Props){
                     <select
                         id="key-select"
                         className="form-select"
-                        defaultValue={props.currentKey}
-                        onChange={handleChangeKey}
+                        defaultValue={context.currentKey.value}
+                        onChange={context.currentKey.handler}
                     >
                         {keyOptionElements}
                     </select>
@@ -65,8 +41,8 @@ export default function Controls(props: Props){
                     <select 
                         id="scale-select" 
                         className="form-select" 
-                        defaultValue={props.currentScale.name}
-                        onChange={handleChangeScale}
+                        defaultValue={context.currentScale.value.name}
+                        onChange={context.currentScale.handler}
                     >
                         {scaleOptionElements}
                     </select>
@@ -75,14 +51,18 @@ export default function Controls(props: Props){
 
             <label htmlFor="tuning-select" className="form-label">
                 Tuning
-                <select id="tuning-select" className="form-select" onChange={e => handleChangeTuning(e)}>
+                <select
+                    id="tuning-select"
+                    className="form-select"
+                    onChange={context.currentTuning.handler}
+                >
                     {tuningOptionElements}
                 </select>
             </label>
 
             <br />
 
-            <input type="button" onClick={sharpFlatContext.toggleSharpFlat} value="♯/♭" className="btn btn-secondary" />
+            <input type="button" onClick={context.sharpOrFlat.handler} value="♯/♭" className="btn btn-secondary" />
         </form>
     )
 }
