@@ -52,19 +52,6 @@ const scales = [
         description: "A common scale used in Middle Eastern, Eastern European, and Jewish music, as well as in metal and other genres.",
     },
     {
-        name: "Melodic Minor",
-        intervals: [
-            "Root",
-            "Major 2nd",
-            "Minor 3rd",
-            "Perfect 4th",
-            "Perfect 5th",
-            "Major 6th",
-            "Major 7th"
-        ],
-        description: "Another variation of the natural minor scale, with both the sixth and seventh degrees raised when ascending but reverted back to natural when descending."
-    },
-    {
         name: "Dorian",
         intervals: [
             "Root",
