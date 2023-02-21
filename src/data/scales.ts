@@ -13,7 +13,7 @@ const scales = [
         description: "One of the most common scales in Western music, with a bright, uplifting sound."
     },
     {
-        name: "Natural Minor",
+        name: "Minor",
         intervals: [
             "Root",
             "Major 2nd",
@@ -24,6 +24,40 @@ const scales = [
             "Minor 7th"
         ],
         description: "The relative minor scale to the major scale, with a darker, more melancholy sound."
+    },
+    {
+        name: "Pentatonic Minor",
+        intervals: [
+            "Root",
+            "Minor 3rd",
+            "Perfect 4th",
+            "Perfect 5th",
+            "Minor 7th"
+        ],
+        description: "A minor scale with the second and sixth degrees removed, resulting in a simple, bluesy-sounding scale that works well in many styles of music."
+    },
+    {
+        name: "Pentatonic Major",
+        intervals: [
+            "Root",
+            "Major 2nd",
+            "Major 3rd",
+            "Perfect 5th",
+            "Major 6th"
+        ],
+        description: "A major scale with the fourth and seventh degrees removed, resulting in a simple, happy-sounding scale that works well in many styles of music."
+    },
+    {
+        name: "Blues",
+        intervals: [
+            "Root",
+            "Minor 3rd",
+            "Perfect 4th",
+            "Diminished 5th",
+            "Perfect 5th",
+            "Minor 7th"
+        ],
+        description: "A six-note scale commonly used in blues music, with a distinctive and powerful sound."
     },
     {
         name: "Harmonic Minor",
@@ -103,40 +137,6 @@ const scales = [
         ],
         description: ""
     },
-    {
-        name: "Pentatonic Major",
-        intervals: [
-            "Root",
-            "Major 2nd",
-            "Major 3rd",
-            "Perfect 5th",
-            "Major 6th"
-        ],
-        description: "A major scale with the fourth and seventh degrees removed, resulting in a simple, happy-sounding scale that works well in many styles of music."
-    },
-        {
-        name: "Pentatonic Minor",
-        intervals: [
-            "Root",
-            "Minor 3rd",
-            "Perfect 4th",
-            "Perfect 5th",
-            "Minor 7th"
-        ],
-        description: "A minor scale with the second and sixth degrees removed, resulting in a simple, bluesy-sounding scale that works well in many styles of music."
-    },
-    {
-        name: "Blues",
-        intervals: [
-            "Root",
-            "Minor 3rd",
-            "Perfect 4th",
-            "Diminished 5th",
-            "Perfect 5th",
-            "Minor 7th"
-        ],
-        description: "A six-note scale commonly used in blues music, with a distinctive and powerful sound."
-    }
 ]
 
 export default scales
