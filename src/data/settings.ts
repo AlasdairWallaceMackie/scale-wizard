@@ -1,3 +1,5 @@
+export const DEFAULT_TUNING = "Standard"
+
 export const SHARP_FLAT_DEFAULT: "sharp"|"flat" = "sharp"
 
 export const DEFAULT_KEY = "E"
