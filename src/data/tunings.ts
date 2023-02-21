@@ -24,7 +24,7 @@ const tunings = [
         ]
     },
     {
-        name: "Half Step Down",
+        name: "Eb Standard",
         description: "A tuning where each string is lowered by one half-step, creating a slightly darker and heavier sound than standard tuning.",
         notes: [
             "Eb4",
@@ -36,7 +36,7 @@ const tunings = [
         ]
     },
     {
-        name: "Full Step Down",
+        name: "D Standard",
         description: "A tuning where each string is lowered by one full step, creating an even darker and heavier sound than half-step down tuning.",
         notes: [
             "D4",
@@ -60,31 +60,7 @@ const tunings = [
         ]
     },
     {
-        name: "Open D",
-        description: "An open tuning for playing slide guitar, popularized by blues and country musicians.",
-        notes: [
-            "D4",
-            "A3",
-            "F#3",
-            "D3",
-            "A2",
-            "D2"
-        ]
-    },
-    {
-        name: "Open G",
-        description: "Another popular open tuning for slide guitar, used by many rock and blues guitarists.",
-        notes: [
-            "D4",
-            "B3",
-            "G3",
-            "D3",
-            "G2",
-            "D2"
-        ]
-    },
-    {
-        name: "C# Standard",
+        name: "C#/Db Standard",
         description: "A tuning where each string is tuned one half-step higher than Standard tuning.",
         notes: [
             "C#4",
@@ -118,7 +94,31 @@ const tunings = [
             "E2",
             "B1"
         ]
-    }
+    },
+    {
+        name: "Open D",
+        description: "An open tuning for playing slide guitar, popularized by blues and country musicians.",
+        notes: [
+            "D4",
+            "A3",
+            "F#3",
+            "D3",
+            "A2",
+            "D2"
+        ]
+    },
+    {
+        name: "Open G",
+        description: "Another popular open tuning for slide guitar, used by many rock and blues guitarists.",
+        notes: [
+            "D4",
+            "B3",
+            "G3",
+            "D3",
+            "G2",
+            "D2"
+        ]
+    },
 ];
 
 export default tunings
