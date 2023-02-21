@@ -26,7 +26,7 @@ export default function Controls(props: Props){
         <option value={index}>{scale.name}</option>
     ))
 
-    function onChangeTuning(event: React.ChangeEvent<HTMLSelectElement>){
+    function handleChangeTuning(event: React.ChangeEvent<HTMLSelectElement>){
         const value: number = parseInt(event.currentTarget.value)
         props.setCurrentTuning(tunings[value])
     }
@@ -75,7 +75,7 @@ export default function Controls(props: Props){
 
             <label htmlFor="tuning-select" className="form-label">
                 Tuning
-                <select id="tuning-select" className="form-select" onChange={e => onChangeTuning(e)}>
+                <select id="tuning-select" className="form-select" onChange={e => handleChangeTuning(e)}>
                     {tuningOptionElements}
                 </select>
             </label>
