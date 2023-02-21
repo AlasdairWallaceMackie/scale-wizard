@@ -17,13 +17,13 @@ type Props = {
 export default function Controls(props: Props){
     const sharpFlatContext = React.useContext(SharpFlatContext)
     const tuningOptionElements = tunings.map((tuning, index) => (
-        <option value={index}>{tuning.name}</option>
+        <option key={index} value={index}>{tuning.name}</option>
     ))
-    const keyOptionElements = Object.keys(noteLookup).map((key: string) => (
-        <option value={key}>{noteLookup[parseInt(key)]}</option>
+    const keyOptionElements = Object.keys(noteLookup).map((key: string, index) => (
+        <option key={index} value={key}>{noteLookup[parseInt(key)]}</option>
     ))
     const scaleOptionElements = scales.map((scale, index) => (
-        <option value={index}>{scale.name}</option>
+        <option key={index} value={index}>{scale.name}</option>
     ))
 
     function handleChangeTuning(event: React.ChangeEvent<HTMLSelectElement>){
