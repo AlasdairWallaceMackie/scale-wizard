@@ -14,7 +14,9 @@ export default function String(props: Props){
     let octave = parseInt(props.pitch.slice(-1))
 
     if (/\d/.test(pitchNote))
-        console.error("String octave is too high of a value (>9)")
+        console.error("String octave value is too high (>9)")
+    
+    //If the note is written as flat, convert to sharp
     if (/[b]/.test(pitchNote))
         pitchNote = flatToSharpConversion[pitchNote]
 
