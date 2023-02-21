@@ -122,3 +122,17 @@ const tunings = [
 ];
 
 export default tunings
+
+/*
+    Receives tuning name in plain English.
+    Checks if there is a name match in tunings array and returns the Tuning.
+    If not found, returns the first tuning in the array.
+*/
+export function getTuning(t: string){
+    for (var i=0; i<tunings.length; i++){
+        if (tunings[i].name === t){
+            return tunings[i]
+        }
+    }
+    return tunings[0]
+}

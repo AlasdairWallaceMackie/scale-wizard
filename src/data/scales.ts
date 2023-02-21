@@ -140,3 +140,17 @@ const scales = [
 ]
 
 export default scales
+
+/*
+    Receives scale name in plain English.
+    Checks if there is a name match in scales array and returns the Tuning.
+    If not found, returns the first scale in the array.
+*/
+export function getScale(s: string){
+    for (var i=0; i<scales.length; i++){
+        if (scales[i].name === s){
+            return scales[i]
+        }
+    }
+    return scales[0]
+}
