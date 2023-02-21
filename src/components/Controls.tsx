@@ -21,8 +21,6 @@ export default function Controls(props: Props){
 
     return (
         <form>
-            <h4 className="text-center mt-5">Controls (Placeholder)</h4>
-
             <label htmlFor="tuning-select" className="form-label">
                 Tuning
                 <select id="tuning-select" className="form-select" onChange={e => onChangeTuning(e)}>

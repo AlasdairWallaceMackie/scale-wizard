@@ -17,6 +17,7 @@ export default function App(){
                 numberOfFrets={numberOfFrets}
                 tuning={currentTuning}
             />
+            <hr />
             <Controls 
                 setCurrentTuning={setCurrentTuning}
             />
