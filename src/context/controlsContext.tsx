@@ -1,8 +1,8 @@
 import React from "react"
 
-import { noteCodeLookup } from "../data/notes"
-import tunings, {getTuning} from "../data/tunings"
-import scales, {getScale} from "../data/scales"
+import { noteCodeLookup, getScaleDegrees } from "../data/notes"
+import tunings, { getTuning } from "../data/tunings"
+import scales, { getScale } from "../data/scales"
 import { DEFAULT_KEY, SHARP_FLAT_DEFAULT, DEFAULT_SCALE, DEFAULT_TUNING, DEFAULT_NUMBER_OF_FRETS } from "../data/settings"
 
 import { ControlsContextInterface, Tuning, Scale } from "../d"
@@ -15,6 +15,12 @@ function ControlsContextProvider(props: any){
     const [currentKey, setCurrentKey] = React.useState<number>(noteCodeLookup[DEFAULT_KEY])
     const [currentScale, setCurrentScale] = React.useState<Scale>(getScale(DEFAULT_SCALE))
     const [sharpOrFlat, setSharpOrFlat] = React.useState<"sharp"|"flat">(SHARP_FLAT_DEFAULT)
+    const [scaleDegrees, setScaleDegrees] = React.useState<number[]>([])
+
+    React.useEffect(() => {
+        setScaleDegrees(getScaleDegrees(currentKey, currentScale))
+        console.log(scaleDegrees)
+    }, [currentKey, currentScale])
 
     const contextData: ControlsContextInterface = {
         currentTuning: {
