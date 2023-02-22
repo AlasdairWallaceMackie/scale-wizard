@@ -19,7 +19,6 @@ function ControlsContextProvider(props: any){
 
     React.useEffect(() => {
         setScaleDegrees(getScaleDegrees(currentKey, currentScale))
-        console.log(scaleDegrees)
     }, [currentKey, currentScale])
 
     const contextData: ControlsContextInterface = {
