@@ -32,8 +32,8 @@ export default function Fret(props: Props){
             <div className={`scale-marker ${scaleMarkerColorClass()}`}>
                 {
                     context.showNoteNames.value === true ?
-                        <div className="note-name">
-                            {pitchName}{props.octave}
+                        <div className="note-name text-center">
+                            {pitchName}
                         </div> :
                         <></>
                 }
