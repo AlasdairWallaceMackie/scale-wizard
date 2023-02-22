@@ -56,6 +56,10 @@ function ControlsContextProvider(props: any){
             handler: () => {setSharpOrFlat(prevState => prevState === "sharp" ? "flat" : "sharp")
             }
         },
+        scaleDegrees: {
+            value: scaleDegrees,
+            // No handler passed, since this will never be directly changed by user
+        },
     }
 
     return (

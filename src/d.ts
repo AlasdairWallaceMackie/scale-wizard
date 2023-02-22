@@ -30,7 +30,10 @@ export interface ControlsContextInterface {
     sharpOrFlat: {
         value: "sharp" | "flat",
         handler: React.MouseEventHandler
-    }
+    },
+    scaleDegrees: {
+        value: number[]
+    },
 }
 
 export interface Default {

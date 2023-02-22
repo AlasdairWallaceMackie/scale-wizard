@@ -17,11 +17,21 @@ export default function Fret(props: Props){
         noteLookup[props.pitchCode] : 
         sharpToFlatConversion(noteLookup[props.pitchCode])
     
-    const className = props.openFret ? "open-fret" : "" 
+    const dynamicClassName = props.openFret ? "open-fret" : "" 
+
+    const scaleMarkerColorClass = () => {
+        if (props.pitchCode === context.currentKey.value )
+            return "bg-danger"
+        if (context.scaleDegrees.value.includes(props.pitchCode))
+            return "bg-info"
+        return "bg-transparent"
+    }
 
     return(
-        <div className={`fret col border py-0 pe-0 ps-1 ${className}`}>
-            {pitchName}{props.octave}
+        <div className={`fret col border py-0 pe-0 ps-1 ${dynamicClassName}`}>
+            <div className={`scale-marker ${scaleMarkerColorClass()}`}>
+                {pitchName}{props.octave}
+            </div>
         </div>
     )
 }
