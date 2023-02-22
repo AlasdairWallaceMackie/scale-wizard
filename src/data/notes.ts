@@ -83,3 +83,12 @@ export function getScaleDegrees(key: number, scale: Scale){
     })
     return scaleDegreeNotes
 }
+
+// Receives note code and returns string displayed as sharp or flat
+// Use this when notes need to be displayed in HTML
+export function noteDisplay(noteCode: number, sharpOrFlat: "sharp"|"flat"){
+    if (sharpOrFlat === "flat")
+        return sharpToFlatConversion(noteLookup[noteCode])
+    else
+        return noteLookup[noteCode]
+}

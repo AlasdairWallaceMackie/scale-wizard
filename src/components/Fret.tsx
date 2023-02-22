@@ -1,7 +1,7 @@
 import React from "react"
 
 import { ControlsContext } from "../context/controlsContext"
-import { noteLookup, sharpToFlatConversion } from "../data/notes"
+import { noteDisplay } from "../data/notes"
 
 type Props = {
     pitchCode: number,
@@ -12,10 +12,7 @@ type Props = {
 export default function Fret(props: Props){
     const context = React.useContext(ControlsContext)
 
-    const pitchName = 
-        context.sharpOrFlat.value === "sharp" ? 
-        noteLookup[props.pitchCode] : 
-        sharpToFlatConversion(noteLookup[props.pitchCode])
+    const pitchName = noteDisplay(props.pitchCode, context.sharpOrFlat.value)
     
     const dynamicClassName = props.openFret ? "open-fret" : "" 
 
