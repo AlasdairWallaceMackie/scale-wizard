@@ -13,7 +13,7 @@ export default function FretMarkers(props: Props){
         }
 
         return list.map((fret, index) => (
-            <div key={index} className="fret-marker col text-center small">{fret}</div>
+            <div key={index} className="fret-marker col text-center small user-select-none">{fret}</div>
         ))
     }
 

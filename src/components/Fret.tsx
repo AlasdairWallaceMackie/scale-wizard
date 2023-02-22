@@ -28,7 +28,7 @@ export default function Fret(props: Props){
     }
 
     return(
-        <div className={`fret col border py-0 pe-0 ps-1 ${dynamicClassName}`}>
+        <div className={`fret col border py-0 pe-0 ps-1 user-select-none ${dynamicClassName}`}>
             <div className={`scale-marker ${scaleMarkerColorClass()}`}>
                 {pitchName}{props.octave}
             </div>
