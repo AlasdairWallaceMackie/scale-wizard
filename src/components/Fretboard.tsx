@@ -8,7 +8,7 @@ export default function Fretboard(){
     const context = React.useContext(ControlsContext)
 
     const stringElements = context.currentTuning.value.notes.map((note, index) => (
-        <String key={index} pitch={note}/>
+        <String key={index} pitch={note} numberOfFrets={context.numberOfFrets.value}/>
     ))
 
     return (

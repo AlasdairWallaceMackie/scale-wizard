@@ -47,7 +47,3 @@ export default function String(props: Props){
         </div>
     )
 }
-
-String.defaultProps = {
-    numberOfFrets: 24,
-}
