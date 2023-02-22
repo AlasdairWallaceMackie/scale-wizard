@@ -16,8 +16,8 @@ function ControlsContextProvider(props: any){
     const [currentScale, setCurrentScale] = React.useState<Scale>(getScale(DEFAULT.SCALE))
     const [sharpOrFlat, setSharpOrFlat] = React.useState<"sharp"|"flat">(DEFAULT.SHARP_FLAT)
     const [scaleDegrees, setScaleDegrees] = React.useState<number[]>([])
-    const [showAllPositions, setShowAllPositions] = React.useState<boolean>(true)
-    const [showNoteNames, setShowNoteNames] = React.useState<boolean>(false)
+    const [showAllPositions, setShowAllPositions] = React.useState<boolean>(DEFAULT.SHOW_ALL_POSITIONS)
+    const [showNoteNames, setShowNoteNames] = React.useState<boolean>(DEFAULT.SHOW_NOTE_NAMES)
 
     React.useEffect(() => {
         setScaleDegrees(getScaleDegrees(currentKey, currentScale))

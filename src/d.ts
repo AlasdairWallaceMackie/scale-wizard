@@ -49,5 +49,7 @@ export interface Default {
     SHARP_FLAT: "sharp"|"flat",
     KEY: string,
     SCALE: string,
-    NUMBER_OF_FRETS: number
+    NUMBER_OF_FRETS: number,
+    SHOW_ALL_POSITIONS: boolean,
+    SHOW_NOTE_NAMES: boolean,
 }
