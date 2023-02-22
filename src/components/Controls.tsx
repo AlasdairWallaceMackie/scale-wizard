@@ -4,6 +4,7 @@ import { ControlsContext } from "../context/controlsContext"
 import tunings from "../data/tunings"
 import scales from "../data/scales"
 import { noteLookup } from "../data/notes"
+import PositionController from "./PositionController"
 
 export default function Controls(){
     const context = React.useContext(ControlsContext)
@@ -63,6 +64,8 @@ export default function Controls(){
             <br />
 
             <input type="button" onClick={context.sharpOrFlat.handler} value="♯/♭" className="btn btn-secondary" />
+
+            <PositionController />
         </form>
     )
 }
