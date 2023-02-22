@@ -65,6 +65,19 @@ export default function Controls(){
 
             <input type="button" onClick={context.sharpOrFlat.handler} value="♯/♭" className="btn btn-secondary" />
 
+            <div className="form-check">
+                <input
+                    id="show-note-names-checkbox"
+                    className="form-check-input"
+                    type="checkbox"
+                    checked={context.showNoteNames.value}
+                    onChange={context.showNoteNames.handler}
+                />
+                <label htmlFor="show-note-names-checkbox" className="form-check-label user-select-none">
+                    Show Note Names
+                </label>
+            </div>
+            
             <PositionController />
         </form>
     )

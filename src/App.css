@@ -2,6 +2,10 @@
     box-shadow: none;
 }
 
+.fret{
+    height: 25px;
+}
+
 .open-fret{
     font-weight: bold;
     outline: 3px solid black;
@@ -9,4 +13,6 @@
 
 .scale-marker{
     border-radius: 50%;
+    height: 100%;
+    width: 100%;
 }
