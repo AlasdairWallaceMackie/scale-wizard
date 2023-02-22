@@ -3,7 +3,7 @@ import React from "react"
 import { ControlsContext } from "../context/controlsContext"
 import tunings from "../data/tunings"
 import scales from "../data/scales"
-import { noteLookup } from "../data/notes"
+import { noteLookup, noteDisplay } from "../data/notes"
 import PositionController from "./PositionController"
 
 export default function Controls(){
@@ -15,7 +15,9 @@ export default function Controls(){
         <option key={index} value={index}>{tuning.name}</option>
     ))
     const keyOptionElements = Object.keys(noteLookup).map((key: string, index) => (
-        <option key={index} value={key}>{noteLookup[parseInt(key)]}</option>
+        <option key={index} value={key}>
+            {noteDisplay(parseInt(key), context.sharpOrFlat.value)}
+        </option>
     ))
     const scaleOptionElements = scales.map((scale, index) => (
         <option key={index} value={index}>{scale.name}</option>
