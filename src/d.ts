@@ -32,3 +32,11 @@ export interface ControlsContextInterface {
         handler: React.MouseEventHandler
     }
 }
+
+export interface Default {
+    TUNING: string,
+    SHARP_FLAT: "sharp"|"flat",
+    KEY: string,
+    SCALE: string,
+    NUMBER_OF_FRETS: number
+}

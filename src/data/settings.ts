@@ -1,9 +1,9 @@
-export const DEFAULT_TUNING = "Standard"
+import { Default } from "../d"
 
-export const SHARP_FLAT_DEFAULT: "sharp"|"flat" = "sharp"
-
-export const DEFAULT_KEY = "E"
-
-export const DEFAULT_SCALE = "Major"
-
-export const DEFAULT_NUMBER_OF_FRETS = 24
+export const DEFAULT: Default = {
+    TUNING: "Standard",
+    SHARP_FLAT: "sharp",
+    KEY: "E",
+    SCALE: "Major",
+    NUMBER_OF_FRETS: 24,
+}
