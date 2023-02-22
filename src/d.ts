@@ -37,7 +37,11 @@ export interface ControlsContextInterface {
     showAllPositions: {
         value: boolean,
         handler: React.ChangeEventHandler<HTMLInputElement>
-    }
+    },
+    showNoteNames: {
+        value: boolean,
+        handler: React.ChangeEventHandler<HTMLInputElement>
+    },
 }
 
 export interface Default {
