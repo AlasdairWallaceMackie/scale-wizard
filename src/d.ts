@@ -34,6 +34,10 @@ export interface ControlsContextInterface {
     scaleDegrees: {
         value: number[]
     },
+    showAllPositions: {
+        value: boolean,
+        handler: React.ChangeEventHandler<HTMLInputElement>
+    }
 }
 
 export interface Default {
