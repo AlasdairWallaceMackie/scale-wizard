@@ -4,11 +4,20 @@
 
 .fret{
     height: 25px;
+    border-right: 4px solid black;
+}
+
+.string-hr{
+    position: relative;
+    top: 50%;
+    height: 1px;
+    background: black;
+    z-index: -1;
 }
 
 .open-fret{
     font-weight: bold;
-    outline: 3px solid black;
+    border-right: 13px solid black;
 }
 
 .scale-marker{

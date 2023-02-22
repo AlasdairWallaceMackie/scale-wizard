@@ -14,23 +14,30 @@ export default function Fret(props: Props){
 
     const pitchName = noteDisplay(props.pitchCode, context.sharpOrFlat.value)
     
-    const dynamicClassName = props.openFret ? "open-fret" : "" 
+    const dynamicClassName = props.openFret ? "open-fret" : ""
 
-    const scaleMarkerColorClass = () => {
-        if (props.pitchCode === context.currentKey.value )
-            return "bg-danger"
-        if (context.scaleDegrees.value.includes(props.pitchCode))
-            return "bg-info"
-        return "bg-transparent"
+    let noteIsVisible = true
+    let scaleMarkerColorClass = ""
+
+    if (props.pitchCode === context.currentKey.value )
+        scaleMarkerColorClass = "bg-danger"
+    else if (context.scaleDegrees.value.includes(props.pitchCode))
+        scaleMarkerColorClass = "bg-info"
+    else {
+        scaleMarkerColorClass = "bg-transparent"
+        noteIsVisible = false
     }
 
+
+
     return(
-        <div className={`fret col border py-0 pe-0 ps-1 user-select-none ${dynamicClassName}`}>
-            <div className={`scale-marker ${scaleMarkerColorClass()}`}>
+        <div className={`fret col p-0 user-select-none ${dynamicClassName}`}>
+            <div className="string-hr"></div>
+            <div className={`scale-marker ${scaleMarkerColorClass}`}>
                 {
                     context.showNoteNames.value === true ?
                         <div className="note-name text-center">
-                            {pitchName}
+                            {noteIsVisible ? pitchName: <></>}
                         </div> :
                         <></>
                 }

@@ -11,6 +11,8 @@ export default function Fretboard(){
         <String key={index} pitch={note} numberOfFrets={context.numberOfFrets.value}/>
     ))
 
+    // TODO: Implement scale positionings
+
     return (
         <div id="fretboard" className="container">
             {stringElements}
