@@ -53,7 +53,8 @@ function ControlsContextProvider(props: any){
         },
         sharpOrFlat: {
             value: sharpOrFlat,
-            handler: () => {setSharpOrFlat(prevState => prevState === "sharp" ? "flat" : "sharp")
+            handler: () => {
+                setSharpOrFlat(prevState => prevState === "sharp" ? "flat" : "sharp")
             }
         },
         scaleDegrees: {
