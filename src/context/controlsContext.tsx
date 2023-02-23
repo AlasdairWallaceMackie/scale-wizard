@@ -1,6 +1,6 @@
 import React from "react"
 
-import { noteCodeLookup, getScaleDegrees } from "../data/notes"
+import { noteCodeLookup, getScaleDegrees, Pitch } from "../data/notes"
 import tunings, { getTuning } from "../data/tunings"
 import scales, { getScale } from "../data/scales"
 import { DEFAULT } from "../data/settings"
@@ -15,9 +15,12 @@ function ControlsContextProvider(props: any){
     const [currentKey, setCurrentKey] = React.useState<number>(noteCodeLookup[DEFAULT.KEY])
     const [currentScale, setCurrentScale] = React.useState<Scale>(getScale(DEFAULT.SCALE))
     const [sharpOrFlat, setSharpOrFlat] = React.useState<"sharp"|"flat">(DEFAULT.SHARP_FLAT)
-    const [scaleDegrees, setScaleDegrees] = React.useState<number[]>([])
     const [showAllPositions, setShowAllPositions] = React.useState<boolean>(DEFAULT.SHOW_ALL_POSITIONS)
     const [showNoteNames, setShowNoteNames] = React.useState<boolean>(DEFAULT.SHOW_NOTE_NAMES)
+    
+    const [currentScaleDegrees, setScaleDegrees] = React.useState<number[]>([])
+    const [currentPositionNotes, setCurrentPositionNotes] = React.useState<Pitch[]>([])
+    const [lowestScaleNote, setLowestScaleNote] = React.useState<Pitch>()
 
     React.useEffect(() => {
         setScaleDegrees(getScaleDegrees(currentKey, currentScale))
@@ -45,6 +48,10 @@ function ControlsContextProvider(props: any){
                 setCurrentScale(scales[value])
             }
         },
+        currentScaleDegrees: {
+            value: currentScaleDegrees,
+            // No handler passed, since this will never be directly changed by user
+        },
         numberOfFrets: {
             value: numberOfFrets,
             handler: (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -57,10 +64,6 @@ function ControlsContextProvider(props: any){
             handler: () => {
                 setSharpOrFlat(prevState => prevState === "sharp" ? "flat" : "sharp")
             }
-        },
-        scaleDegrees: {
-            value: scaleDegrees,
-            // No handler passed, since this will never be directly changed by user
         },
         showAllPositions: {
             value: showAllPositions,

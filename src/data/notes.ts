@@ -84,6 +84,44 @@ export function getScaleDegrees(key: number, scale: Scale){
     return scaleDegreeNotes
 }
 
+export class Pitch{
+    note: number
+    octave: number
+
+    constructor(note: number, octaveNum: number){
+        this.note = note
+        this.octave = octaveNum
+    }
+
+    increment(){
+        this.note++
+        if (this.note > MAX_NUMBER_OF_NOTES){
+            this.note = 1
+            this.octave++
+        }
+    }
+
+    clone(){
+        return new Pitch(this.note, this.octave)
+    }
+}
+
+export function getPitchObject(pitchString: string){
+    let pitchNote = pitchString.slice(0,-1)
+    let octave = parseInt(pitchString.slice(-1))
+
+    if (/\d/.test(pitchNote))
+        console.error("String octave value is too high (>9)")
+
+    //If the note is written as flat, convert to sharp
+    if (/[b]/.test(pitchNote))
+        pitchNote = flatToSharpConversion(pitchNote)
+
+    const pitchCode = noteCodeLookup[pitchNote]
+
+    return new Pitch(pitchCode, octave)
+}
+
 // Receives note code and returns string displayed as sharp or flat
 // Use this when notes need to be displayed in HTML
 export function noteDisplay(noteCode: number, sharpOrFlat: "sharp"|"flat"){
