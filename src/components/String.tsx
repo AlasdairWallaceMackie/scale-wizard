@@ -17,8 +17,6 @@ export default function String(props: Props){
         currentPitch.increment()
     }
 
-    //TODO: Refactor to use Pitch class
-
     const fretElements = frets.map((pitch, index) => (
         <Fret
             key={nanoid()}
