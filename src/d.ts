@@ -27,12 +27,12 @@ export interface ControlsContextInterface {
         value: Scale,
         handler: React.ChangeEventHandler<HTMLSelectElement>
     },
+    currentScaleDegrees: {
+        value: number[]
+    },
     sharpOrFlat: {
         value: "sharp" | "flat",
         handler: React.MouseEventHandler
-    },
-    scaleDegrees: {
-        value: number[]
     },
     showAllPositions: {
         value: boolean,
