@@ -20,7 +20,6 @@ function ControlsContextProvider(props: any){
     
     const [currentScaleDegrees, setCurrentScaleDegrees] = React.useState<number[]>([])
     const [currentPositionNotes, setCurrentPositionNotes] = React.useState<Pitch[]>([])
-    const [lowestScalePitch, setLowestScalePitch] = React.useState<Pitch>(new Pitch(1,1))
 
 
 
@@ -31,14 +30,10 @@ function ControlsContextProvider(props: any){
 
     React.useEffect(() => {
         const lowestString: string = currentTuning.notes.slice(-1)[0]
-
-        setLowestScalePitch(getLowestScalePitch(
+        const lowestScalePitch = getLowestScalePitch(
             getPitchObject(lowestString),
             currentScaleDegrees
-        ))
-    }, [currentScaleDegrees, currentTuning])
-
-    React.useEffect(() => {        
+        )
         let currentPitch: Pitch = lowestScalePitch.clone()
         let pitchList: Pitch[] = []
         
@@ -49,12 +44,12 @@ function ControlsContextProvider(props: any){
         for (var i=0; i<40; i++){
             if (currentScaleDegrees.includes(currentPitch.note))
                 pitchList.push(currentPitch.clone())
-
+    
             currentPitch.increment()
         }
-
+    
         setCurrentPositionNotes(pitchList)
-    }, [lowestScalePitch, currentScaleDegrees])
+    }, [currentScaleDegrees, currentTuning])
 
 
 
