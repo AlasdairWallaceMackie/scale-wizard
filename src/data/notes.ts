@@ -122,6 +122,16 @@ export function getPitchObject(pitchString: string){
     return new Pitch(pitchCode, octave)
 }
 
+export function getLowestScalePitch(pitch: Pitch, scaleDegrees: number[]){
+    if (!scaleDegrees.length)
+        return new Pitch(0,0)
+
+    while (!scaleDegrees.includes(pitch.note))
+        pitch.increment()
+    
+    return pitch
+}
+
 // Receives note code and returns string displayed as sharp or flat
 // Use this when notes need to be displayed in HTML
 export function noteDisplay(noteCode: number, sharpOrFlat: "sharp"|"flat"){

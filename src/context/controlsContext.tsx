@@ -1,6 +1,6 @@
 import React from "react"
 
-import { noteCodeLookup, getScaleDegrees, Pitch } from "../data/notes"
+import { noteCodeLookup, getScaleDegrees, Pitch, getPitchObject, getLowestScalePitch } from "../data/notes"
 import tunings, { getTuning } from "../data/tunings"
 import scales, { getScale } from "../data/scales"
 import { DEFAULT } from "../data/settings"
@@ -18,13 +18,22 @@ function ControlsContextProvider(props: any){
     const [showAllPositions, setShowAllPositions] = React.useState<boolean>(DEFAULT.SHOW_ALL_POSITIONS)
     const [showNoteNames, setShowNoteNames] = React.useState<boolean>(DEFAULT.SHOW_NOTE_NAMES)
     
-    const [currentScaleDegrees, setScaleDegrees] = React.useState<number[]>([])
+    const [currentScaleDegrees, setCurrentScaleDegrees] = React.useState<number[]>([])
     const [currentPositionNotes, setCurrentPositionNotes] = React.useState<Pitch[]>([])
-    const [lowestScaleNote, setLowestScaleNote] = React.useState<Pitch>()
+    const [lowestScalePitch, setLowestScalePitch] = React.useState<Pitch>()
 
     React.useEffect(() => {
-        setScaleDegrees(getScaleDegrees(currentKey, currentScale))
+        setCurrentScaleDegrees(getScaleDegrees(currentKey, currentScale))
     }, [currentKey, currentScale])
+
+    React.useEffect(() => {
+        const lowestString = currentTuning.notes.slice(-1)[0]
+
+        setLowestScalePitch(getLowestScalePitch(
+            getPitchObject(lowestString),
+            currentScaleDegrees
+        ))
+    }, [currentScaleDegrees, currentTuning])
 
     const contextData: ControlsContextInterface = {
         currentTuning: {
