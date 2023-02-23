@@ -8,4 +8,5 @@ export const DEFAULT: Default = {
     NUMBER_OF_FRETS: 24,
     SHOW_ALL_POSITIONS: true,
     SHOW_NOTE_NAMES: false,
+    SHOW_OCTAVE_NUMBERS: true,
 }

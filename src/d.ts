@@ -52,4 +52,5 @@ export interface Default {
     NUMBER_OF_FRETS: number,
     SHOW_ALL_POSITIONS: boolean,
     SHOW_NOTE_NAMES: boolean,
+    SHOW_OCTAVE_NUMBERS: boolean,
 }
