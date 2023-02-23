@@ -89,6 +89,10 @@ export class Pitch{
     octave: number
 
     constructor(note: number, octaveNum: number){
+        if (note < 0 || note > MAX_NUMBER_OF_NOTES){
+            note = 1
+            console.error("Invalid note received by Pitch constructor. Defaulting to 1.")
+        }
         this.note = note
         this.octave = octaveNum
     }
@@ -124,7 +128,7 @@ export function getPitchObject(pitchString: string){
 
 export function getLowestScalePitch(pitch: Pitch, scaleDegrees: number[]){
     if (!scaleDegrees.length)
-        return new Pitch(0,0)
+        return new Pitch(1,1)
 
     while (!scaleDegrees.includes(pitch.note))
         pitch.increment()
@@ -134,7 +138,7 @@ export function getLowestScalePitch(pitch: Pitch, scaleDegrees: number[]){
 
 // Receives note code and returns string displayed as sharp or flat
 // Use this when notes need to be displayed in HTML
-export function noteDisplay(noteCode: number, sharpOrFlat: "sharp"|"flat"){
+export function noteDisplay(noteCode: number, sharpOrFlat: "sharp"|"flat"): string{
     if (sharpOrFlat === "flat")
         return sharpToFlatConversion(noteLookup[noteCode])
     else

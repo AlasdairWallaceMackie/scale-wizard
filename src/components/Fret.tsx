@@ -19,12 +19,10 @@ export default function Fret(props: Props){
                 props.pitch.octave.toString()
                 : ""
             )
-    
     const dynamicClassName = props.openFret ? "open-fret" : ""
 
-    let noteNameVisible = true
     let scaleMarkerColorClass = ""
-
+    let noteNameVisible = true
     if (props.pitch.note === context.currentKey.value )
         scaleMarkerColorClass = "bg-danger"
     else if (context.currentScaleDegrees.value.includes(props.pitch.note))
@@ -33,6 +31,7 @@ export default function Fret(props: Props){
         scaleMarkerColorClass = "bg-transparent"
         noteNameVisible = false
     }
+
 
 
 
