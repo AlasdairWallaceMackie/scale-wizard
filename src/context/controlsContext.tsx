@@ -20,20 +20,44 @@ function ControlsContextProvider(props: any){
     
     const [currentScaleDegrees, setCurrentScaleDegrees] = React.useState<number[]>([])
     const [currentPositionNotes, setCurrentPositionNotes] = React.useState<Pitch[]>([])
-    const [lowestScalePitch, setLowestScalePitch] = React.useState<Pitch>()
+    const [lowestScalePitch, setLowestScalePitch] = React.useState<Pitch>(new Pitch(1,1))
+
+
+
 
     React.useEffect(() => {
         setCurrentScaleDegrees(getScaleDegrees(currentKey, currentScale))
     }, [currentKey, currentScale])
 
     React.useEffect(() => {
-        const lowestString = currentTuning.notes.slice(-1)[0]
+        const lowestString: string = currentTuning.notes.slice(-1)[0]
 
         setLowestScalePitch(getLowestScalePitch(
             getPitchObject(lowestString),
             currentScaleDegrees
         ))
     }, [currentScaleDegrees, currentTuning])
+
+    React.useEffect(() => {        
+        let currentPitch: Pitch = lowestScalePitch.clone()
+        let pitchList: Pitch[] = []
+        
+        /**
+            * Do this around 40 times to get a comfortable length list
+            * Need enough pitches to cover at least 3 notes per String component 
+        */
+        for (var i=0; i<40; i++){
+            if (currentScaleDegrees.includes(currentPitch.note))
+                pitchList.push(currentPitch.clone())
+
+            currentPitch.increment()
+        }
+
+        setCurrentPositionNotes(pitchList)
+    }, [lowestScalePitch, currentScaleDegrees])
+
+
+
 
     const contextData: ControlsContextInterface = {
         currentTuning: {
@@ -87,6 +111,9 @@ function ControlsContextProvider(props: any){
             }
         },
     }
+
+
+
 
     return (
         <ControlsContext.Provider value={contextData}>
