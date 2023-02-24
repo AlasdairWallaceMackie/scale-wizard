@@ -7,15 +7,24 @@ import FretMarkers from "./FretMarkers"
 
 export default function Fretboard(){
     const context = React.useContext(ControlsContext)
+    const notesPerString = 3
+    //TODO: notesPerString based on # of notes in scale
 
+    let positionPitches = structuredClone(context.currentPositionPitches.value)
+    
     const stringElements = context.currentTuning.value.notes.map((note, index) => {
         const pitch = getPitchObject(note)
         return (
-            <String key={index} pitch={pitch} numberOfFrets={context.numberOfFrets.value}/>
+            <String
+                key={index}
+                pitch={pitch}
+                numberOfFrets={context.numberOfFrets.value}
+                positionPitches={positionPitches.splice(-notesPerString, notesPerString)}
+            />
         )
     })
 
-    // TODO: Implement scale positionings
+
 
     return (
         <div id="fretboard" className="container">

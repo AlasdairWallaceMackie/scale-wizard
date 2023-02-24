@@ -19,7 +19,7 @@ function ControlsContextProvider(props: any){
     const [showNoteNames, setShowNoteNames] = React.useState<boolean>(DEFAULT.SHOW_NOTE_NAMES)
     
     const [currentScaleDegrees, setCurrentScaleDegrees] = React.useState<number[]>([])
-    const [currentPositionNotes, setCurrentPositionNotes] = React.useState<Pitch[]>([])
+    const [currentPositionPitches, setCurrentPositionPitches] = React.useState<Pitch[]>([])
 
 
 
@@ -48,7 +48,7 @@ function ControlsContextProvider(props: any){
             currentPitch.increment()
         }
     
-        setCurrentPositionNotes(pitchList)
+        setCurrentPositionPitches(pitchList)
     }, [currentScaleDegrees, currentTuning])
 
 
@@ -105,6 +105,10 @@ function ControlsContextProvider(props: any){
                 setShowNoteNames(prevState => !prevState)
             }
         },
+        currentPositionPitches: {
+            value: currentPositionPitches,
+            //TODO: Add handler
+        }
     }
 
 

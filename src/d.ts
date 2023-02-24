@@ -1,3 +1,5 @@
+import { Pitch } from "./data/notes"
+
 export interface Tuning {
     name: string,
     description: string,
@@ -42,6 +44,9 @@ export interface ControlsContextInterface {
         value: boolean,
         handler: React.ChangeEventHandler<HTMLInputElement>
     },
+    currentPositionPitches: {
+        value: Pitch[],
+    }
 }
 
 export interface Default {
