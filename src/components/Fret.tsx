@@ -1,7 +1,7 @@
 import React from "react"
 
 import { ControlsContext } from "../context/controlsContext"
-import { Pitch, noteDisplay } from "../data/notes"
+import { Pitch } from "../data/notes"
 import { DEFAULT } from "../data/settings"
 
 type Props = {
@@ -13,12 +13,6 @@ type Props = {
 export default function Fret(props: Props){
     const context = React.useContext(ControlsContext)
 
-    const pitchName = 
-        noteDisplay(props.pitch.note, context.sharpOrFlat.value) + 
-            (DEFAULT.SHOW_OCTAVE_NUMBERS === true ? 
-                props.pitch.octave.toString()
-                : ""
-            )
     const isOpenFret = props.openFret ? "open-fret" : ""
 
     let scaleMarkerColorClass = ""
@@ -44,7 +38,7 @@ export default function Fret(props: Props){
                         {
                             context.showNoteNames.value === true ?
                                 <div className="note-name text-center">
-                                    {noteNameVisible ? pitchName: <></>}
+                                    {noteNameVisible ? props.pitch.display(context.sharpOrFlat.value): <></>}
                                 </div> :
                                 <></>
                         }

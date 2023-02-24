@@ -109,6 +109,11 @@ export class Pitch{
     clone(){
         return new Pitch(this.note, this.octave)
     }
+
+    display(sharpOrFlat = DEFAULT.SHARP_FLAT){
+        let noteName = noteDisplay(this.note, sharpOrFlat)
+        return `${noteName}${DEFAULT.SHOW_OCTAVE_NUMBERS ? this.octave: ""}`
+    }
 }
 
 export function getPitchObject(pitchString: string){
@@ -139,7 +144,6 @@ export function getLowestScalePitch(pitch: Pitch, scaleDegrees: number[]){
 
 // Receives note code and returns string displayed as sharp or flat
 // Use this when notes need to be displayed in HTML
-//TODO: Move "show octave" logic to this function
 export function noteDisplay(noteCode: number, sharpOrFlat: "sharp"|"flat" = DEFAULT.SHARP_FLAT): string{
     if (sharpOrFlat === "flat")
         return sharpToFlatConversion(noteLookup[noteCode])
