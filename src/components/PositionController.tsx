@@ -18,15 +18,25 @@ export default function PositionController(){
                 <label htmlFor="all-positions-checkbox" className="form-check-label user-select-none">
                     Show All Positions
                 </label>
+                <div className="btn-group ms-3">
+                    <button
+                        type="button"
+                        className="btn btn-secondary" 
+                        disabled={context.showAllPositions.value}
+                        onClick={() => context.currentPositionPitches.handler(-1)}
+                    >
+                        {"<"}
+                    </button>
+                    <button
+                        type="button"
+                        className="btn btn-secondary" 
+                        disabled={context.showAllPositions.value}
+                        onClick={() => context.currentPositionPitches.handler(1)}
+                    >
+                        {">"}
+                    </button>
+                </div>
             </div>
-            {
-                context.showAllPositions.value === false ?
-                    <div className="btn-group">
-                        <button type="button" className="btn btn-outline-secondary">{"<"}</button>
-                        <button type="button" className="btn btn-outline-secondary">{">"}</button>
-                    </div> :
-                    <></>
-            }
         </div>
     )
 }

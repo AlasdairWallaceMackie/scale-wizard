@@ -105,6 +105,22 @@ export class Pitch{
             this.octave++
         }
     }
+    decrement(){
+        this.note--
+        if (this.note < 1){
+            this.note = MAX_NUMBER_OF_NOTES
+            this.octave--
+        }
+    }
+
+    incrementWithinScale(increment: 1|-1, scaleDegrees: number[]){
+        do{
+            switch(increment){
+                case 1: this.increment(); break;
+                case -1: this.decrement(); break;
+            }
+        } while (!scaleDegrees.includes(this.note))
+    }
 
     clone(){
         return new Pitch(this.note, this.octave)

@@ -46,6 +46,7 @@ export interface ControlsContextInterface {
     },
     currentPositionPitches: {
         value: Pitch[],
+        handler: Function
     }
 }
 

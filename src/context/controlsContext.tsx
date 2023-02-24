@@ -107,7 +107,15 @@ function ControlsContextProvider(props: any){
         },
         currentPositionPitches: {
             value: currentPositionPitches,
-            //TODO: Add handler
+            handler: (increment: -1|1) => {
+                setCurrentPositionPitches(prevPitches => {
+                    let newPitches = prevPitches.map(pitch => pitch.clone())
+                    newPitches.forEach((pitch: Pitch) => {
+                        pitch.incrementWithinScale(increment, currentScaleDegrees)
+                    })
+                    return newPitches
+                })
+            }
         }
     }
 
