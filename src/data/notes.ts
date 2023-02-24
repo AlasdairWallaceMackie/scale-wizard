@@ -1,4 +1,5 @@
 import { Scale } from "../d";
+import { DEFAULT } from "./settings";
 
 const flip = (data: object) => Object.fromEntries(
     Object
@@ -138,7 +139,8 @@ export function getLowestScalePitch(pitch: Pitch, scaleDegrees: number[]){
 
 // Receives note code and returns string displayed as sharp or flat
 // Use this when notes need to be displayed in HTML
-export function noteDisplay(noteCode: number, sharpOrFlat: "sharp"|"flat"): string{
+//TODO: Move "show octave" logic to this function
+export function noteDisplay(noteCode: number, sharpOrFlat: "sharp"|"flat" = DEFAULT.SHARP_FLAT): string{
     if (sharpOrFlat === "flat")
         return sharpToFlatConversion(noteLookup[noteCode])
     else
