@@ -11,18 +11,19 @@ export default function Fretboard(){
     //TODO: notesPerString based on # of notes in scale
 
     let positionPitches = structuredClone(context.currentPositionPitches.value)
-    
-    const stringElements = context.currentTuning.value.notes.map((note, index) => {
+    const tuningNotesFlipped = structuredClone(context.currentTuning.value.notes).reverse()
+
+    const stringElements =tuningNotesFlipped.map((note, index) => {
         const pitch = getPitchObject(note)
         return (
             <String
                 key={index}
                 pitch={pitch}
                 numberOfFrets={context.numberOfFrets.value}
-                positionPitches={positionPitches.splice(-notesPerString, notesPerString)}
+                positionPitches={positionPitches.splice(0, notesPerString)}
             />
         )
-    })
+    }).reverse()
 
 
 
