@@ -19,7 +19,7 @@ export default function Fret(props: Props){
                 props.pitch.octave.toString()
                 : ""
             )
-    const dynamicClassName = props.openFret ? "open-fret" : ""
+    const isOpenFret = props.openFret ? "open-fret" : ""
 
     let scaleMarkerColorClass = ""
     let noteNameVisible = true
@@ -36,21 +36,22 @@ export default function Fret(props: Props){
 
 
     return(
-        <div className={`fret col p-0 user-select-none ${dynamicClassName}`}>
+        <div className={`fret col p-0 user-select-none ${isOpenFret}`}>
             <div className="string-hr"></div>
             {
                 (props.inPosition === true || context.showAllPositions.value === true) ?
-                <div className={`scale-marker ${scaleMarkerColorClass}`}>
-                    {
-                        context.showNoteNames.value === true ?
-                            <div className="note-name text-center">
-                                {noteNameVisible ? pitchName: <></>}
-                            </div> :
-                            <></>
-                    }
-                </div> :
-                <></>
-                }
+                    <div className={`fret-info ${scaleMarkerColorClass}`}>
+                        {
+                            context.showNoteNames.value === true ?
+                                <div className="note-name text-center">
+                                    {noteNameVisible ? pitchName: <></>}
+                                </div> :
+                                <></>
+                        }
+                    </div> :
+                    <div className="fret-info"></div>
+            }
         </div>
     )
 }
+
