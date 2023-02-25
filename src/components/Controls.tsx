@@ -11,15 +11,12 @@ export default function Controls(){
 
 
 
-    const tuningOptionElements = tunings.map((tuning, index) => (
-        <option key={index} value={index}>{tuning.name}</option>
-    ))
     const keyOptionElements = Object.keys(noteLookup).map((key: string, index) => (
         <option key={index} value={key}>
             {noteDisplay(parseInt(key), context.sharpOrFlat.value)}
         </option>
     ))
-
+    
     let defaultScaleValue: number = 0
     const scaleOptionElements = scales.map((scale, index) => {
         if (scale.name === context.currentScale.value.name)
@@ -27,6 +24,12 @@ export default function Controls(){
         return <option key={index} value={index}>{scale.name}</option>
     })
 
+    let defaultTuningValue: number = 0
+    const tuningOptionElements = tunings.map((tuning, index) => {
+        if (tuning.name === context.currentTuning.value.name)
+            defaultTuningValue = index
+        return <option key={index} value={index}>{tuning.name}</option>
+    })
 
     console.log(context.currentScale.value.name)
     return (
@@ -61,6 +64,7 @@ export default function Controls(){
                 <select
                     id="tuning-select"
                     className="form-select"
+                    defaultValue={defaultTuningValue}
                     onChange={context.currentTuning.handler}
                 >
                     {tuningOptionElements}
