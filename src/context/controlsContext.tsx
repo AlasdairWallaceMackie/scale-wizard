@@ -34,6 +34,10 @@ function ControlsContextProvider(props: any){
             getPitchObject(lowestString),
             currentScaleDegrees
         )
+        while (lowestScalePitch.note !== currentKey){
+            lowestScalePitch.increment()
+        }
+
         let currentPitch: Pitch = lowestScalePitch.clone()
         let pitchList: Pitch[] = []
         
