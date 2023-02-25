@@ -19,12 +19,16 @@ export default function Controls(){
             {noteDisplay(parseInt(key), context.sharpOrFlat.value)}
         </option>
     ))
-    const scaleOptionElements = scales.map((scale, index) => (
-        <option key={index} value={index}>{scale.name}</option>
-    ))
+
+    let defaultScaleValue: number = 0
+    const scaleOptionElements = scales.map((scale, index) => {
+        if (scale.name === context.currentScale.value.name)
+            defaultScaleValue = index
+        return <option key={index} value={index}>{scale.name}</option>
+    })
 
 
-
+    console.log(context.currentScale.value.name)
     return (
         <form>
             <div className="d-flex">
@@ -44,7 +48,7 @@ export default function Controls(){
                     <select 
                         id="scale-select" 
                         className="form-select" 
-                        defaultValue={context.currentScale.value.name}
+                        defaultValue={defaultScaleValue}
                         onChange={context.currentScale.handler}
                     >
                         {scaleOptionElements}
