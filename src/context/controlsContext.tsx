@@ -34,18 +34,21 @@ function ControlsContextProvider(props: any){
             getPitchObject(lowestString),
             currentScaleDegrees
         )
-        while (lowestScalePitch.note !== currentKey){
-            lowestScalePitch.increment()
+        if (currentScaleDegrees.length > 0){
+            // Do...while loop ensures the default position won't start at the bottom of the neck
+            do {
+                lowestScalePitch.increment()
+            } while (lowestScalePitch.note !== currentScaleDegrees[0])
         }
 
         let currentPitch: Pitch = lowestScalePitch.clone()
         let pitchList: Pitch[] = []
         
         /**
-            * Do this around 40 times to get a comfortable length list
-            * Need enough pitches to cover at least 3 notes per String component 
+            * Do this around 45 times to get a comfortable length list
+            * Need enough pitches to cover at least 3 notes per String component for guitars with up to 8 strings
         */
-        for (var i=0; i<40; i++){
+        for (var i=0; i<45; i++){
             if (currentScaleDegrees.includes(currentPitch.note))
                 pitchList.push(currentPitch.clone())
     
