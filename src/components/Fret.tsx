@@ -2,7 +2,6 @@ import React from "react"
 
 import { ControlsContext } from "../context/controlsContext"
 import { Pitch } from "../data/notes"
-import { DEFAULT } from "../data/settings"
 
 type Props = {
     pitch: Pitch,
