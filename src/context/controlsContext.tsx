@@ -15,7 +15,7 @@ function ControlsContextProvider(props: any){
     const [currentKey, setCurrentKey] = React.useState<number>(noteCodeLookup[DEFAULT.KEY])
     const [currentScale, setCurrentScale] = React.useState<Scale>(getScale(DEFAULT.SCALE))
     const [sharpOrFlat, setSharpOrFlat] = React.useState<"sharp"|"flat">(DEFAULT.SHARP_FLAT)
-    const [showAllPositions, setShowAllPositions] = React.useState<boolean>(DEFAULT.SHOW_ALL_POSITIONS)
+    const [showAllNotes, setShowAllNotes] = React.useState<boolean>(DEFAULT.SHOW_ALL_NOTES)
     const [showNoteNames, setShowNoteNames] = React.useState<boolean>(DEFAULT.SHOW_NOTE_NAMES)
     
     const [currentScaleDegrees, setCurrentScaleDegrees] = React.useState<number[]>([])
@@ -100,10 +100,10 @@ function ControlsContextProvider(props: any){
                 setSharpOrFlat(prevState => prevState === "sharp" ? "flat" : "sharp")
             }
         },
-        showAllPositions: {
-            value: showAllPositions,
+        showAllNotes: {
+            value: showAllNotes,
             handler: () => {
-                setShowAllPositions(prevState => !prevState)
+                setShowAllNotes(prevState => !prevState)
             }
         },
         showNoteNames: {

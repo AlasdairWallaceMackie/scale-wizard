@@ -36,7 +36,7 @@ export interface ControlsContextInterface {
         value: "sharp" | "flat",
         handler: React.MouseEventHandler
     },
-    showAllPositions: {
+    showAllNotes: {
         value: boolean,
         handler: React.ChangeEventHandler<HTMLInputElement>
     },
@@ -56,7 +56,7 @@ export interface Default {
     KEY: string,
     SCALE: string,
     NUMBER_OF_FRETS: number,
-    SHOW_ALL_POSITIONS: boolean,
+    SHOW_ALL_NOTES: boolean,
     SHOW_NOTE_NAMES: boolean,
     SHOW_OCTAVE_NUMBERS: boolean,
 }

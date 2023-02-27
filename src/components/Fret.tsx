@@ -33,7 +33,7 @@ export default function Fret(props: Props){
         <div className={`fret col p-0 user-select-none ${isOpenFret}`}>
             <div className="string-hr"></div>
             {
-                (props.inPosition === true || context.showAllPositions.value === true) ?
+                (props.inPosition === true || context.showAllNotes.value === true) ?
                     <div className={`fret-info ${scaleMarkerColorClass}`}>
                         {
                             context.showNoteNames.value === true ?
