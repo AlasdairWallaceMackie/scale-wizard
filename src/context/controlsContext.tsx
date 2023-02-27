@@ -60,21 +60,30 @@ function ControlsContextProvider(props: any){
             for (var i=0; i<45; i++){
                 if (currentScaleDegrees.includes(currentPitch.note))
                     pitchList.push(currentPitch.clone())
-        
+
                 currentPitch.increment()
             }
-
             positionLists.push(pitchList)
             basePitch.incrementWithinScale(1, currentScaleDegrees)
         } while(JSON.stringify(basePitch) !== JSON.stringify(highestPositionStartPitch) && currentScaleDegrees.length > 0)
-    
+
         setAllPositions(positionLists)
+
+        let startPositionIndex = 0
+        for (i=0; i<=positionLists.length; i++){
+            if (positionLists[i][0].note === currentScaleDegrees[0] && i !== 0){
+                startPositionIndex = i
+                break
+            }
+        }
+        setCurrentPositionIndex(startPositionIndex)
     }, [currentScaleDegrees, currentTuning])
 
     React.useEffect(() => {
         if (allPositions.length)
             setCurrentPositionPitches(allPositions[currentPositionIndex])
     }, [allPositions, currentPositionIndex])
+
 
 
 
