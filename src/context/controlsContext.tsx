@@ -19,6 +19,8 @@ function ControlsContextProvider(props: any){
     const [showNoteNames, setShowNoteNames] = React.useState<boolean>(DEFAULT.SHOW_NOTE_NAMES)
     
     const [currentScaleDegrees, setCurrentScaleDegrees] = React.useState<number[]>([])
+    const [allPositions, setAllPositions] = React.useState<Pitch[][]>([])
+    const [currentPositionIndex, setCurrentPositionIndex] = React.useState<number>(0)
     const [currentPositionPitches, setCurrentPositionPitches] = React.useState<Pitch[]>([])
 
 
@@ -29,35 +31,50 @@ function ControlsContextProvider(props: any){
     }, [currentKey, currentScale])
 
     React.useEffect(() => {
-        const lowestString: string = currentTuning.notes.slice(-1)[0]
+        if (currentScaleDegrees.length === 0)
+            return
+
+        const lowestStringInfo: string = currentTuning.notes.slice(-1)[0]
         const lowestScalePitch = getLowestScalePitch(
-            getPitchObject(lowestString),
+            getPitchObject(lowestStringInfo),
             currentScaleDegrees
         )
-        if (currentScaleDegrees.length > 0){
-            // Do...while loop ensures the default position won't start at the bottom of the neck
-            do {
-                lowestScalePitch.increment()
-            } while (lowestScalePitch.note !== currentScaleDegrees[0])
-        }
 
-        let currentPitch: Pitch = lowestScalePitch.clone()
+        const highestPositionStartPitch = lowestScalePitch.clone()
+        highestPositionStartPitch.octave += 2
+        highestPositionStartPitch
+            .incrementWithinScale(-1, currentScaleDegrees)
+            .incrementWithinScale(-1, currentScaleDegrees)
+
+        let basePitch: Pitch = lowestScalePitch.clone()
         let pitchList: Pitch[] = []
+        let positionLists: Pitch[][] = []
+
+        do {
+            let currentPitch: Pitch = basePitch.clone()
+            pitchList = []
+            /**
+                * Do this around 45 times to get a comfortable length list
+                * Need enough pitches to cover at least 3 notes per String component for guitars with up to 8 strings
+            */
+            for (var i=0; i<45; i++){
+                if (currentScaleDegrees.includes(currentPitch.note))
+                    pitchList.push(currentPitch.clone())
         
-        /**
-            * Do this around 45 times to get a comfortable length list
-            * Need enough pitches to cover at least 3 notes per String component for guitars with up to 8 strings
-        */
-        for (var i=0; i<45; i++){
-            if (currentScaleDegrees.includes(currentPitch.note))
-                pitchList.push(currentPitch.clone())
+                currentPitch.increment()
+            }
+
+            positionLists.push(pitchList)
+            basePitch.incrementWithinScale(1, currentScaleDegrees)
+        } while(JSON.stringify(basePitch) !== JSON.stringify(highestPositionStartPitch) && currentScaleDegrees.length > 0)
     
-            currentPitch.increment()
-        }
-    
-        setCurrentPositionPitches(pitchList)
+        setAllPositions(positionLists)
     }, [currentScaleDegrees, currentTuning])
 
+    React.useEffect(() => {
+        if (allPositions.length)
+            setCurrentPositionPitches(allPositions[currentPositionIndex])
+    }, [allPositions, currentPositionIndex])
 
 
 
@@ -112,16 +129,31 @@ function ControlsContextProvider(props: any){
                 setShowNoteNames(prevState => !prevState)
             }
         },
+        allPositions: {
+            value: allPositions,
+            // No handler
+        },
         currentPositionPitches: {
             value: currentPositionPitches,
             handler: (increment: -1|1) => {
-                setCurrentPositionPitches(prevPitches => {
-                    let newPitches = prevPitches.map(pitch => pitch.clone())
-                    newPitches.forEach((pitch: Pitch) => {
-                        pitch.incrementWithinScale(increment, currentScaleDegrees)
-                    })
-                    return newPitches
-                })
+                // setCurrentPositionPitches(prevPitches => {
+                //     let newPitches = prevPitches.map(pitch => pitch.clone())
+                //     newPitches.forEach((pitch: Pitch) => {
+                //         pitch.incrementWithinScale(increment, currentScaleDegrees)
+                //     })
+                //     return newPitches
+                // })
+            }
+        },
+        currentPositionIndex: {
+            value: currentPositionIndex,
+            handler: e => {
+                const value = parseInt(e.target.value)
+
+                if (value >= 0 && value < allPositions.length)
+                    setCurrentPositionIndex(value)
+                else
+                    console.warn("Attempt to set currentPositionIndex out of range")
             }
         }
     }

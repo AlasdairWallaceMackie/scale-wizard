@@ -44,10 +44,17 @@ export interface ControlsContextInterface {
         value: boolean,
         handler: React.ChangeEventHandler<HTMLInputElement>
     },
+    allPositions: {
+        value: Pitch[][]
+    }
     currentPositionPitches: {
         value: Pitch[],
         handler: Function
-    }
+    },
+    currentPositionIndex: {
+        value: number,
+        handler: React.ChangeEventHandler<HTMLInputElement>
+    },
 }
 
 export interface Default {

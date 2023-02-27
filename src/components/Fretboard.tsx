@@ -4,6 +4,7 @@ import { ControlsContext } from "../context/controlsContext"
 import { getPitchObject } from "../data/notes"
 import String from "./String"
 import FretMarkers from "./FretMarkers"
+import PositionRange from "./PositionRange"
 
 export default function Fretboard(){
     const context = React.useContext(ControlsContext)
@@ -31,6 +32,8 @@ export default function Fretboard(){
         <div id="fretboard" className="container">
             {stringElements}
             <FretMarkers numberOfFrets={context.numberOfFrets.value}/>
+
+            <PositionRange />
         </div>
     )
 }
