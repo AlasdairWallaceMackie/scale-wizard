@@ -60,8 +60,8 @@ export function getScaleDegrees(key: number, scale: Scale){
             case "Minor 3rd": num = 3; break;
             case "Major 3rd": num = 4; break;
             case "Perfect 4th": num = 5; break;
-            case "Tritone":
             case "Augmented 4th":
+            case "Tritone":
             case "Diminished 5th": num = 6; break;
             case "Perfect 5th": num = 7; break;
             case "Minor 6th": num = 8; break;
