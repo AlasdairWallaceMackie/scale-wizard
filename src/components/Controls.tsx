@@ -4,7 +4,6 @@ import { ControlsContext } from "../context/controlsContext"
 import tunings from "../data/tunings"
 import scales from "../data/scales"
 import { noteLookup, noteDisplay } from "../data/notes"
-import PositionController from "./PositionController"
 
 export default function Controls(){
     const context = React.useContext(ControlsContext)
@@ -90,7 +89,18 @@ export default function Controls(){
                 </label>
             </div>
             
-            <PositionController />
+            <div className="form-check">
+                <input
+                    id="all-notes-checkbox"
+                    className="form-check-input"
+                    type="checkbox"
+                    checked={context.showAllNotes.value}
+                    onChange={context.showAllNotes.handler}
+                />
+                <label htmlFor="all-notes-checkbox" className="form-check-label user-select-none">
+                    Show All Notes
+                </label>
+            </div>
         </form>
     )
 }
