@@ -119,7 +119,7 @@ export class Pitch{
                 case 1: this.increment(); break;
                 case -1: this.decrement(); break;
             }
-        } while (!scaleDegrees.includes(this.note))
+        } while (!scaleDegrees.includes(this.note) && scaleDegrees.length !== 0)
     }
 
     clone(){
