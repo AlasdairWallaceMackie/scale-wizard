@@ -21,7 +21,7 @@ export default function String(props: Props){
     function isInPosition(pitch: Pitch): boolean{
         let matchFound = false
         props.positionPitches.forEach(positionPitch => {
-            if (pitch.note === positionPitch.note && pitch.octave === positionPitch.octave)
+            if (JSON.stringify(pitch) === JSON.stringify(positionPitch))
                 matchFound = true
         })
         return matchFound
