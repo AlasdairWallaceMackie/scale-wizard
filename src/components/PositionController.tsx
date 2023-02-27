@@ -23,7 +23,7 @@ export default function PositionController(){
                         type="button"
                         className="btn btn-secondary" 
                         disabled={context.showAllNotes.value}
-                        onClick={() => context.currentPositionPitches.handler(-1)}
+                        onClick={() => context.currentPositionIndex.increment(-1)}
                     >
                         {"<"}
                     </button>
@@ -31,7 +31,7 @@ export default function PositionController(){
                         type="button"
                         className="btn btn-secondary" 
                         disabled={context.showAllNotes.value}
-                        onClick={() => context.currentPositionPitches.handler(1)}
+                        onClick={() => context.currentPositionIndex.increment(1)}
                     >
                         {">"}
                     </button>

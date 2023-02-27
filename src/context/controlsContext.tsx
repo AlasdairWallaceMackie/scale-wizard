@@ -135,15 +135,7 @@ function ControlsContextProvider(props: any){
         },
         currentPositionPitches: {
             value: currentPositionPitches,
-            handler: (increment: -1|1) => {
-                // setCurrentPositionPitches(prevPitches => {
-                //     let newPitches = prevPitches.map(pitch => pitch.clone())
-                //     newPitches.forEach((pitch: Pitch) => {
-                //         pitch.incrementWithinScale(increment, currentScaleDegrees)
-                //     })
-                //     return newPitches
-                // })
-            }
+            // No handler
         },
         currentPositionIndex: {
             value: currentPositionIndex,
@@ -154,6 +146,12 @@ function ControlsContextProvider(props: any){
                     setCurrentPositionIndex(value)
                 else
                     console.warn("Attempt to set currentPositionIndex out of range")
+            },
+            increment: (increment: -1|1) => {
+                setCurrentPositionIndex(prevIndex => {
+                    const newIndex = prevIndex + increment
+                    return newIndex >=0 && newIndex < allPositions.length ? newIndex : prevIndex
+                })
             }
         }
     }

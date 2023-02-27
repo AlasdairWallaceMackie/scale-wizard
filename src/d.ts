@@ -48,12 +48,12 @@ export interface ControlsContextInterface {
         value: Pitch[][]
     }
     currentPositionPitches: {
-        value: Pitch[],
-        handler: Function
+        value: Pitch[]
     },
     currentPositionIndex: {
         value: number,
-        handler: React.ChangeEventHandler<HTMLInputElement>
+        handler: React.ChangeEventHandler<HTMLInputElement>,
+        increment: Function
     },
 }
 
