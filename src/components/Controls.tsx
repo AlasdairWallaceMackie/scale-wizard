@@ -31,7 +31,9 @@ export default function Controls(){
         return <option key={index} value={index}>{tuning.name}</option>
     })
 
-    console.log(context.currentScale.value.name)
+
+
+
     return (
         <form>
             <div className="d-flex">
