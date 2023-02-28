@@ -72,10 +72,19 @@ export default function Controls(){
                 </select>
             </label>
 
-            <br />
-
-            <input type="button" onClick={context.sharpOrFlat.handler} value="♯/♭" className="btn btn-secondary" />
-
+            <div className="d-flex fs-4">
+                ♯
+                <div className="form-check form-switch mx-1">
+                    <input
+                        type="checkbox"
+                        className="form-check-input"
+                        onClick={context.sharpOrFlat.handler}
+                        // checked={context.sharpOrFlat.value === "flat"} 
+                    />
+                </div>
+                ♭
+            </div>
+            
             <div className="form-check">
                 <input
                     id="show-note-names-checkbox"
