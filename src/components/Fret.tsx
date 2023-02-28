@@ -29,7 +29,7 @@ export default function Fret(props: Props){
 
 
     return(
-        <div className={`fret col p-0 user-select-none ${isOpenFret}`}>
+        <div className={`fret col user-select-none ${isOpenFret}`}>
             <div className="string-hr"></div>
             {
                 (props.inPosition === true || context.showAllNotes.value === true) ?

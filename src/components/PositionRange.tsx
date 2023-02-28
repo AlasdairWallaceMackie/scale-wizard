@@ -6,7 +6,7 @@ export default function PositionRange(){
     const context = React.useContext(ControlsContext)
 
     return (
-        <div className="d-flex align-items-center">
+        <div className="d-flex align-items-center mt-4">
             <button
                 type="button"
                 className="btn btn-sm btn-secondary" 

@@ -6,14 +6,19 @@ type Props = {
 
 export default function FretMarkers(props: Props){
     const dotElements = () => {
-        let list = []
+        let dotList = []
         
         for (var i=0; i<=props.numberOfFrets; i++){
-            list.push(getDots(i))
+            dotList.push(getDots(i))
         }
 
-        return list.map((fret, index) => (
-            <div key={index} className="fret-marker col text-center small user-select-none">{fret}</div>
+        return dotList.map((dots, index) => (
+            <div
+                key={index}
+                className={`fret col text-center small user-select-none ${index === 0 ? "open-fret" : ""} border-white`}
+            >
+                {dots}
+            </div>
         ))
     }
 
