@@ -24,6 +24,26 @@ const tunings = [
         ]
     },
     {
+        name: "Standard - BASS",
+        description: "",
+        notes: [
+            "G3",
+            "D3",
+            "A2",
+            "E2"
+        ]
+    },
+    {
+        name: "Drop D - BASS",
+        description: "",
+        notes: [
+            "G3",
+            "D3",
+            "A2",
+            "D2"
+        ]
+    },
+    {
         name: "Eb Standard",
         description: "A tuning where each string is lowered by one half-step, creating a slightly darker and heavier sound than standard tuning.",
         notes: [
@@ -93,6 +113,33 @@ const tunings = [
             "A2",
             "E2",
             "B1"
+        ]
+    },
+    {
+        name: "Standard 7-String",
+        description: "",
+        notes: [
+            "E4",
+            "B3",
+            "G3",
+            "D3",
+            "A2",
+            "E2",
+            "B1"
+        ]
+    },
+    {
+        name: "Standard 8-String",
+        description: "",
+        notes: [
+            "E4",
+            "B3",
+            "G3",
+            "D3",
+            "A2",
+            "E2",
+            "B1",
+            "F#1"
         ]
     },
     {
