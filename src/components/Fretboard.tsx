@@ -8,8 +8,13 @@ import PositionRange from "./PositionRange"
 
 export default function Fretboard(){
     const context = React.useContext(ControlsContext)
-    const notesPerString = 3
-    //TODO: notesPerString based on # of notes in scale
+    
+    let notesPerString: number
+    switch (context.currentScale.value.intervals.length){
+        case 7: notesPerString = 3; break;
+        case 5: notesPerString = 2; break;
+        default: notesPerString = 3
+    }
 
     let positionPitches = structuredClone(context.currentPositionPitches.value)
     const tuningNotesFlipped = structuredClone(context.currentTuning.value.notes).reverse()
