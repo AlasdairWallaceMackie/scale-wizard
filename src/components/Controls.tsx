@@ -72,32 +72,6 @@ export default function Controls(){
                 </select>
             </label>
 
-            <div className="d-flex fs-4">
-                ♯
-                <div className="form-check form-switch mx-1">
-                    <input
-                        type="checkbox"
-                        className="form-check-input"
-                        onClick={context.sharpOrFlat.handler}
-                        // checked={context.sharpOrFlat.value === "flat"} 
-                    />
-                </div>
-                ♭
-            </div>
-            
-            <div className="form-check">
-                <input
-                    id="show-note-names-checkbox"
-                    className="form-check-input"
-                    type="checkbox"
-                    checked={context.showNoteNames.value}
-                    onChange={context.showNoteNames.handler}
-                />
-                <label htmlFor="show-note-names-checkbox" className="form-check-label user-select-none">
-                    Show Note Names
-                </label>
-            </div>
-            
             <div className="form-check">
                 <input
                     id="all-notes-checkbox"
@@ -109,6 +83,38 @@ export default function Controls(){
                 <label htmlFor="all-notes-checkbox" className="form-check-label user-select-none">
                     Show All Notes
                 </label>
+            </div>
+            
+            <div className="d-flex">
+                <div className="form-check mt-1 me-3">
+                    <input
+                        id="show-note-names-checkbox"
+                        className="form-check-input"
+                        type="checkbox"
+                        checked={context.showNoteNames.value}
+                        onChange={context.showNoteNames.handler}
+                    />
+                    <label htmlFor="show-note-names-checkbox" className="form-check-label user-select-none">
+                        Show Note Names
+                    </label>
+                </div>
+
+                {
+                    context.showNoteNames.value === true ? 
+                        <div className="d-flex fs-4">
+                            ♯
+                            <div className="form-check form-switch mx-1">
+                                <input
+                                    type="checkbox"
+                                    className="form-check-input"
+                                    onClick={context.sharpOrFlat.handler}
+                                    // checked={context.sharpOrFlat.value === "flat"} 
+                                />
+                            </div>
+                            ♭
+                        </div>
+                    : <></>
+                }
             </div>
         </form>
     )
