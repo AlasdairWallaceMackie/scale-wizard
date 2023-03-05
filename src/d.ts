@@ -34,7 +34,8 @@ export interface ControlsContextInterface {
     },
     sharpOrFlat: {
         value: "sharp" | "flat",
-        handler: React.MouseEventHandler
+        // handler: React.MouseEventHandler
+        handler: React.ChangeEventHandler<HTMLInputElement>
     },
     showAllNotes: {
         value: boolean,

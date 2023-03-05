@@ -107,8 +107,8 @@ export default function Controls(){
                                 <input
                                     type="checkbox"
                                     className="form-check-input"
-                                    onClick={context.sharpOrFlat.handler}
-                                    // checked={context.sharpOrFlat.value === "flat"} 
+                                    onChange={context.sharpOrFlat.handler}
+                                    checked={context.sharpOrFlat.value === "flat"}
                                 />
                             </div>
                             ♭
