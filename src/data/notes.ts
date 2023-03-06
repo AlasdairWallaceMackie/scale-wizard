@@ -7,9 +7,8 @@ const flip = (data: object) => Object.fromEntries(
         .map(([key, value]) => [value, parseInt(key)])
     );
 
-// Don't change this ever
-export const MAX_NUMBER_OF_NOTES: number = 12
 
+// ! Don't change this ever
 export const noteLookup: {[key: number]: string} = {
     1: "C",
     2: "C#",
@@ -24,6 +23,8 @@ export const noteLookup: {[key: number]: string} = {
     11: "A#",
     12: "B",
 }
+
+export const MAX_NUMBER_OF_NOTES: number = Object.keys(noteLookup).length
 
 export const noteCodeLookup = flip(noteLookup)
 
