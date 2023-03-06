@@ -34,87 +34,90 @@ export default function Controls(){
 
 
     return (
-        <form>
-            <div className="d-flex">
-                <label htmlFor="key-select" className="form-label">
-                    Key
+        <form id="controls" className="d-flex justify-content-evenly">
+            <div>
+                <div className="d-flex">
+                    <div className="form-floating">
+                        <select
+                            id="key-select"
+                            className="form-select"
+                            defaultValue={context.currentKey.value}
+                            onChange={context.currentKey.handler}
+                        >
+                            {keyOptionElements}
+                        </select>
+                        <label htmlFor="key-select" className="form-label">Key</label>
+                    </div>
+                    <div className="form-floating">
+                        <select 
+                            id="scale-select" 
+                            className="form-select" 
+                            defaultValue={defaultScaleValue}
+                            onChange={context.currentScale.handler}
+                        >
+                            {scaleOptionElements}
+                        </select>
+                        <label htmlFor="scale-select" className="form-label">Scale</label>
+                    </div>
+                </div>
+                <div className="form-floating">
                     <select
-                        id="key-select"
+                        id="tuning-select"
                         className="form-select"
-                        defaultValue={context.currentKey.value}
-                        onChange={context.currentKey.handler}
+                        defaultValue={defaultTuningValue}
+                        onChange={context.currentTuning.handler}
                     >
-                        {keyOptionElements}
+                        {tuningOptionElements}
                     </select>
-                </label>
-                <label htmlFor="scale-select" className="form-label">
-                    Scale
-                    <select 
-                        id="scale-select" 
-                        className="form-select" 
-                        defaultValue={defaultScaleValue}
-                        onChange={context.currentScale.handler}
-                    >
-                        {scaleOptionElements}
-                    </select>
-                </label>
+                    <label htmlFor="tuning-select" className="form-label">Tuning</label>
+                </div>
             </div>
 
-            <label htmlFor="tuning-select" className="form-label">
-                Tuning
-                <select
-                    id="tuning-select"
-                    className="form-select"
-                    defaultValue={defaultTuningValue}
-                    onChange={context.currentTuning.handler}
-                >
-                    {tuningOptionElements}
-                </select>
-            </label>
-
-            <div className="form-check">
-                <input
-                    id="all-notes-checkbox"
-                    className="form-check-input"
-                    type="checkbox"
-                    checked={context.showAllNotes.value}
-                    onChange={context.showAllNotes.handler}
-                />
-                <label htmlFor="all-notes-checkbox" className="form-check-label user-select-none">
-                    Show All Notes
-                </label>
-            </div>
-            
-            <div className="d-flex">
-                <div className="form-check mt-1 me-3">
+            <div>
+                <div className="form-check mb-4">
                     <input
-                        id="show-note-names-checkbox"
+                        id="all-notes-checkbox"
                         className="form-check-input"
                         type="checkbox"
-                        checked={context.showNoteNames.value}
-                        onChange={context.showNoteNames.handler}
+                        checked={context.showAllNotes.value}
+                        onChange={context.showAllNotes.handler}
                     />
-                    <label htmlFor="show-note-names-checkbox" className="form-check-label user-select-none">
-                        Show Note Names
+                    <label htmlFor="all-notes-checkbox" className="form-check-label user-select-none">
+                        Show All Notes
                     </label>
                 </div>
-
-                {
-                    context.showNoteNames.value === true ? 
-                        <div className="d-flex fs-4">
-                            ♯
-                            <div className="form-check form-switch mx-1">
-                                <input
-                                    type="checkbox"
-                                    className="form-check-input"
-                                    onChange={context.sharpOrFlat.handler}
-                                    checked={context.sharpOrFlat.value === "flat"}
-                                />
+                
+                <div>
+                    <div className="form-check mt-1 me-3">
+                        <input
+                            id="show-note-names-checkbox"
+                            className="form-check-input"
+                            type="checkbox"
+                            checked={context.showNoteNames.value}
+                            onChange={context.showNoteNames.handler}
+                        />
+                        <label htmlFor="show-note-names-checkbox" className="form-check-label user-select-none">
+                            Show Note Names
+                        </label>
+                    </div>
+    
+                    {
+                        context.showNoteNames.value === true ? 
+                            <div className="d-flex justify-content-center fs-4">
+                                ♯
+                                <div className="form-check form-switch mx-1">
+                                    <input
+                                        type="checkbox"
+                                        className="form-check-input"
+                                        onChange={context.sharpOrFlat.handler}
+                                        checked={context.sharpOrFlat.value === "flat"}
+                                    />
+                                </div>
+                                ♭
                             </div>
-                            ♭
-                        </div>
-                    : <></>
-                }
+                        : <></>
+                    }
+                </div>
             </div>
         </form>
     )
