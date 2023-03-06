@@ -60,7 +60,7 @@ export default function Controls(){
                         <label htmlFor="scale-select" className="form-label">Scale</label>
                     </div>
                 </div>
-                <div className="form-floating">
+                <div className="form-floating mt-2">
                     <select
                         id="tuning-select"
                         className="form-select"
