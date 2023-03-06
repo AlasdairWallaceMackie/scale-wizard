@@ -18,38 +18,45 @@ function ControlsContextProvider(props: any){
     const [showAllNotes, setShowAllNotes] = React.useState<boolean>(DEFAULT.SHOW_ALL_NOTES)
     const [showNoteNames, setShowNoteNames] = React.useState<boolean>(DEFAULT.SHOW_NOTE_NAMES)
     
-    const [currentScaleDegrees, setCurrentScaleDegrees] = React.useState<number[]>([])
-    const [allPositions, setAllPositions] = React.useState<Pitch[][]>([])
+    const currentScaleDegrees: number[] = React.useMemo(() => getScaleDegrees(currentKey, currentScale), [currentKey, currentScale])
+    const allPositions: Pitch[][] = React.useMemo(() => getAllPositions(currentTuning, currentScaleDegrees), [currentTuning, currentScaleDegrees])
+
     const [currentPositionIndex, setCurrentPositionIndex] = React.useState<number>(0)
-    const [currentPositionPitches, setCurrentPositionPitches] = React.useState<Pitch[]>([])
-
-
-
-
+    const currentPositionPitches: Pitch[] = allPositions[currentPositionIndex]
+    
     React.useEffect(() => {
-        setCurrentScaleDegrees(getScaleDegrees(currentKey, currentScale))
-    }, [currentKey, currentScale])
+        let startPositionIndex = 0
+        for (var i=0; i<=allPositions.length; i++){
+            if (allPositions[i][0].note === currentScaleDegrees[0] && i !== 0){
+                startPositionIndex = i
+                break
+            }
+        }
+        setCurrentPositionIndex(startPositionIndex)
+    }, [allPositions, currentScaleDegrees])
 
-    React.useEffect(() => {
-        if (currentScaleDegrees.length === 0)
-            return
 
-        const lowestStringInfo: string = currentTuning.notes.slice(-1)[0]
+
+
+
+
+    function getAllPositions(tuning: Tuning, scaleDegrees: number[]): Pitch[][]{
+        const lowestStringInfo: string = tuning.notes.slice(-1)[0]
         const lowestScalePitch = getLowestScalePitch(
             getPitchObject(lowestStringInfo),
-            currentScaleDegrees
+            scaleDegrees
         )
-
+    
         const highestPositionStartPitch = lowestScalePitch.clone()
         highestPositionStartPitch.octave += 2
         highestPositionStartPitch
-            .incrementWithinScale(-1, currentScaleDegrees)
-            .incrementWithinScale(-1, currentScaleDegrees)
-
+            .incrementWithinScale(-1, scaleDegrees)
+            .incrementWithinScale(-1, scaleDegrees)
+    
         let basePitch: Pitch = lowestScalePitch.clone()
         let pitchList: Pitch[] = []
         let positionLists: Pitch[][] = []
-
+    
         do {
             let currentPitch: Pitch = basePitch.clone()
             pitchList = []
@@ -58,31 +65,19 @@ function ControlsContextProvider(props: any){
                 * Need enough pitches to cover at least 3 notes per String component for guitars with up to 8 strings
             */
             for (var i=0; i<45; i++){
-                if (currentScaleDegrees.includes(currentPitch.note))
+                if (scaleDegrees.includes(currentPitch.note))
                     pitchList.push(currentPitch.clone())
-
+    
                 currentPitch.increment()
             }
             positionLists.push(pitchList)
-            basePitch.incrementWithinScale(1, currentScaleDegrees)
-        } while(JSON.stringify(basePitch) !== JSON.stringify(highestPositionStartPitch) && currentScaleDegrees.length > 0)
+            basePitch.incrementWithinScale(1, scaleDegrees)
+        } while(JSON.stringify(basePitch) !== JSON.stringify(highestPositionStartPitch) && scaleDegrees.length > 0)
 
-        setAllPositions(positionLists)
+        return positionLists
+    }
 
-        let startPositionIndex = 0
-        for (i=0; i<=positionLists.length; i++){
-            if (positionLists[i][0].note === currentScaleDegrees[0] && i !== 0){
-                startPositionIndex = i
-                break
-            }
-        }
-        setCurrentPositionIndex(startPositionIndex)
-    }, [currentScaleDegrees, currentTuning])
 
-    React.useEffect(() => {
-        if (allPositions.length)
-            setCurrentPositionPitches(allPositions[currentPositionIndex])
-    }, [allPositions, currentPositionIndex])
 
 
 
