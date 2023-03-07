@@ -9,7 +9,7 @@ export default function PositionRange(){
         <div className="d-flex align-items-center mt-4">
             <button
                 type="button"
-                className="btn btn-sm btn-secondary" 
+                className="btn btn-lg btn-secondary" 
                 disabled={context.showAllNotes.value}
                 onClick={() => context.currentPositionIndex.increment(-1)}
             >
@@ -28,7 +28,7 @@ export default function PositionRange(){
 
             <button
                 type="button"
-                className="btn btn-sm btn-secondary" 
+                className="btn btn-lg btn-secondary" 
                 disabled={context.showAllNotes.value}
                 onClick={() => context.currentPositionIndex.increment(1)}
             >
