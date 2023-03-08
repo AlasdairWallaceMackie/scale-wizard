@@ -10,3 +10,8 @@ export const DEFAULT: Default = {
     SHOW_NOTE_NAMES: false,
     SHOW_OCTAVE_NUMBERS: false,
 }
+
+export const MIN_WINDOW_SIZE = {
+    height: 450,
+    width: 600
+}
