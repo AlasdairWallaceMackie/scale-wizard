@@ -1,24 +1,15 @@
 import React from "react"
 
+import { WindowSizeContext } from "../context/windowSizeContext"
 import ControlsForm from "./ControlsForm"
 import { Gear as GearIcon } from "./icons"
 
+import { MIN_WINDOW_SIZE } from "../data/settings"
+
 export default function Controls(){
     const controlsFormElement = React.useMemo(() => <ControlsForm />, [])
-    
-    const [windowHeight, setWindowHeight] = React.useState<number>(window.innerHeight)
-    const mobileView: boolean = windowHeight <= 450
-
-    React.useEffect(() => {
-        function watchHeight(){
-            setWindowHeight(window.innerHeight)
-        }
-        window.addEventListener('resize', watchHeight)
-
-        return () => window.removeEventListener('resize', watchHeight)
-    }, [])
-
-
+    const windowHeight = React.useContext(WindowSizeContext).height
+    const mobileView: boolean = windowHeight <= MIN_WINDOW_SIZE.height
 
 
     return (
@@ -34,6 +25,7 @@ export default function Controls(){
                 <>{controlsFormElement}</>
             }
 
+            {/* This modal should always be rendered, otherwise the screen could be locked if the window size is changed while the modal is active, requiring a page refresh */}
             <div className="modal fade shadow-lg" id="controlsModal">
                 <div className="modal-dialog modal-dialog-centered">
                     <div className="modal-content">
