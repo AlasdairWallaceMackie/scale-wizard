@@ -6,10 +6,11 @@ import { MIN_WINDOW_SIZE } from "../data/settings"
 // This component will only display if the current windowWidth is smaller than MIN_WINDOW_SIZE.width
 export default function RotatePhoneOverlay(){
     const windowWidth = React.useContext(WindowSizeContext).width
+    const showOverlay = windowWidth < MIN_WINDOW_SIZE.width
 
     return (
         <>
-            {windowWidth < MIN_WINDOW_SIZE.width ? 
+            {showOverlay ? 
                 <div id="rotate-phone-overlay">
                     <h1 className="overlay-text">Rotate<br/>Phone</h1>
                 </div>

@@ -37,7 +37,7 @@ export default function ControlsForm(){
         <form id="controls--form" className="d-flex justify-content-evenly">
             <div>
                 <div className="d-flex">
-                    <div className="form-floating">
+                    <div className="form-floating me-2">
                         <select
                             id="key-select"
                             className="form-select"
@@ -73,8 +73,8 @@ export default function ControlsForm(){
                 </div>
             </div>
 
-            <div>
-                <div className="form-check mb-4">
+            <div className="ms-3 fs-2">
+                <div className="form-check form-switch mb-4">
                     <input
                         id="all-notes-checkbox"
                         className="form-check-input"
@@ -88,7 +88,7 @@ export default function ControlsForm(){
                 </div>
                 
                 <div>
-                    <div className="form-check mt-1 me-3">
+                    <div className="form-check form-switch mt-1 me-3">
                         <input
                             id="show-note-names-checkbox"
                             className="form-check-input"
@@ -103,7 +103,7 @@ export default function ControlsForm(){
     
                     {
                         context.showNoteNames.value === true ? 
-                            <div className="d-flex justify-content-center fs-4">
+                            <div className="d-flex justify-content-center">
                                 ♯
                                 <div className="form-check form-switch mx-1">
                                     <input

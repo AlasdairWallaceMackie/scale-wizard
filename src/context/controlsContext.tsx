@@ -22,7 +22,12 @@ function ControlsContextProvider(props: any){
     const allPositions: Pitch[][] = React.useMemo(() => getAllPositions(currentTuning, currentScaleDegrees), [currentTuning, currentScaleDegrees])
 
     const [currentPositionIndex, setCurrentPositionIndex] = React.useState<number>(0)
-    const currentPositionPitches: Pitch[] = allPositions[currentPositionIndex]
+
+    // Checks to make sure it's not accessing a nonexistent position. (This can sometimes occur between renders)
+    const currentPositionPitches: Pitch[] = 
+        currentPositionIndex >= allPositions.length ? 
+            allPositions[0] : 
+            allPositions[currentPositionIndex]
     
     React.useEffect(() => {
         let startPositionIndex = 0
@@ -49,9 +54,13 @@ function ControlsContextProvider(props: any){
     
         const highestPositionStartPitch = lowestScalePitch.clone()
         highestPositionStartPitch.octave += 2
-        highestPositionStartPitch
-            .incrementWithinScale(-1, scaleDegrees)
-            .incrementWithinScale(-1, scaleDegrees)
+        
+        // For diatonic scales (7 notes), this will prevent the position range from going off the fretboard
+        if (currentScale.intervals.length && currentScale.intervals.length >= 7){
+            highestPositionStartPitch
+                .incrementWithinScale(-1, scaleDegrees)
+                .incrementWithinScale(-1, scaleDegrees)
+        }
     
         let basePitch: Pitch = lowestScalePitch.clone()
         let pitchList: Pitch[] = []

@@ -23,6 +23,11 @@ footer{
     transform: translate(-50%, -50%);
 }
 
+#controlsModal .modal-dialog{
+    width: auto;
+    max-width: 80%;
+}
+
 .btn:focus{
     box-shadow: none;
 }
