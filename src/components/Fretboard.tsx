@@ -15,8 +15,8 @@ export default function Fretboard(){
         default: notesPerString = 3
     }
 
-    let positionPitches = structuredClone(context.currentPositionPitches.value)
-    const tuningNotesFlipped = structuredClone(context.currentTuning.value.notes).reverse()
+    let positionPitches = [...context.currentPositionPitches.value]
+    const tuningNotesFlipped = [...context.currentTuning.value.notes].reverse()
 
     const stringElements = tuningNotesFlipped.map((note, index) => {
         const pitch = getPitchObject(note)
