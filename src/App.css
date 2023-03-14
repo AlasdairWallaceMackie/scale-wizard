@@ -28,6 +28,10 @@ footer{
     max-width: 80%;
 }
 
+#controls--form--key{
+    min-width: 60px;
+}
+
 .btn:focus{
     box-shadow: none;
 }

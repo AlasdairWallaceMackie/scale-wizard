@@ -13,5 +13,5 @@ export const DEFAULT: Default = {
 
 export const MIN_WINDOW_SIZE = {
     height: 450,
-    width: 600
+    width: 550
 }

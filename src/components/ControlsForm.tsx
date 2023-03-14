@@ -37,7 +37,7 @@ export default function ControlsForm(){
         <form id="controls--form" className="d-flex justify-content-evenly">
             <div>
                 <div className="d-flex">
-                    <div className="form-floating me-2">
+                    <div id="controls--form--key" className="form-floating me-2">
                         <select
                             id="key-select"
                             className="form-select"
