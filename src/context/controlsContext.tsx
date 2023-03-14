@@ -49,9 +49,13 @@ function ControlsContextProvider(props: any){
     
         const highestPositionStartPitch = lowestScalePitch.clone()
         highestPositionStartPitch.octave += 2
-        highestPositionStartPitch
-            .incrementWithinScale(-1, scaleDegrees)
-            .incrementWithinScale(-1, scaleDegrees)
+        
+        // For diatonic scales (7 notes), this will prevent the position range from going off the fretboard
+        if (currentScale.intervals.length && currentScale.intervals.length >= 7){
+            highestPositionStartPitch
+                .incrementWithinScale(-1, scaleDegrees)
+                .incrementWithinScale(-1, scaleDegrees)
+        }
     
         let basePitch: Pitch = lowestScalePitch.clone()
         let pitchList: Pitch[] = []
