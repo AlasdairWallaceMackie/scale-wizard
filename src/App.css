@@ -1,3 +1,9 @@
+footer{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
 #rotate-phone-overlay{
     position: fixed;
     width: 100%;
