@@ -22,7 +22,12 @@ function ControlsContextProvider(props: any){
     const allPositions: Pitch[][] = React.useMemo(() => getAllPositions(currentTuning, currentScaleDegrees), [currentTuning, currentScaleDegrees])
 
     const [currentPositionIndex, setCurrentPositionIndex] = React.useState<number>(0)
-    const currentPositionPitches: Pitch[] = allPositions[currentPositionIndex]
+
+    // Checks to make sure it's not accessing a nonexistent position. (This can sometimes occur between renders)
+    const currentPositionPitches: Pitch[] = 
+        currentPositionIndex >= allPositions.length ? 
+            allPositions[0] : 
+            allPositions[currentPositionIndex]
     
     React.useEffect(() => {
         let startPositionIndex = 0
