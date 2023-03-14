@@ -19,37 +19,13 @@ function ControlsContextProvider(props: any){
     const [showNoteNames, setShowNoteNames] = React.useState<boolean>(DEFAULT.SHOW_NOTE_NAMES)
     
     const currentScaleDegrees: number[] = React.useMemo(() => getScaleDegrees(currentKey, currentScale), [currentKey, currentScale])
-    const allPositions: Pitch[][] = React.useMemo(() => getAllPositions(currentTuning, currentScaleDegrees), [currentTuning, currentScaleDegrees])
-
     const [currentPositionIndex, setCurrentPositionIndex] = React.useState<number>(0)
 
-    // Checks to make sure it's not accessing a nonexistent position. (This can sometimes occur between renders)
-    const currentPositionPitches: Pitch[] = 
-        currentPositionIndex >= allPositions.length ? 
-            allPositions[0] : 
-            allPositions[currentPositionIndex]
-    
-    React.useEffect(() => {
-        let startPositionIndex = 0
-        for (var i=0; i<=allPositions.length; i++){
-            if (allPositions[i][0].note === currentScaleDegrees[0] && i !== 0){
-                startPositionIndex = i
-                break
-            }
-        }
-        setCurrentPositionIndex(startPositionIndex)
-    }, [allPositions, currentScaleDegrees])
-
-
-
-
-
-
-    function getAllPositions(tuning: Tuning, scaleDegrees: number[]): Pitch[][]{
-        const lowestStringInfo: string = tuning.notes.slice(-1)[0]
+    const allPositions: Pitch[][] = React.useMemo(() => {
+        const lowestStringInfo: string = currentTuning.notes.slice(-1)[0]
         const lowestScalePitch = getLowestScalePitch(
             getPitchObject(lowestStringInfo),
-            scaleDegrees
+            currentScaleDegrees
         )
     
         const highestPositionStartPitch = lowestScalePitch.clone()
@@ -58,8 +34,8 @@ function ControlsContextProvider(props: any){
         // For diatonic scales (7 notes), this will prevent the position range from going off the fretboard
         if (currentScale.intervals.length && currentScale.intervals.length >= 7){
             highestPositionStartPitch
-                .incrementWithinScale(-1, scaleDegrees)
-                .incrementWithinScale(-1, scaleDegrees)
+                .incrementWithinScale(-1, currentScaleDegrees)
+                .incrementWithinScale(-1, currentScaleDegrees)
         }
     
         let basePitch: Pitch = lowestScalePitch.clone()
@@ -74,19 +50,37 @@ function ControlsContextProvider(props: any){
                 * Need enough pitches to cover at least 3 notes per String component for guitars with up to 8 strings
             */
             for (var i=0; i<45; i++){
-                if (scaleDegrees.includes(currentPitch.note))
+                if (currentScaleDegrees.includes(currentPitch.note))
                     pitchList.push(currentPitch.clone())
     
                 currentPitch.increment()
             }
             positionLists.push(pitchList)
-            basePitch.incrementWithinScale(1, scaleDegrees)
-        } while(JSON.stringify(basePitch) !== JSON.stringify(highestPositionStartPitch) && scaleDegrees.length > 0)
+            basePitch.incrementWithinScale(1, currentScaleDegrees)
+        } while(JSON.stringify(basePitch) !== JSON.stringify(highestPositionStartPitch) && currentScaleDegrees.length > 0)
 
         return positionLists
-    }
+    }, [currentTuning, currentScale, currentScaleDegrees])
+
+    // Checks to make sure it's not accessing a nonexistent position. (This can sometimes occur between renders)
+    const currentPositionPitches: Pitch[] = 
+        currentPositionIndex >= allPositions.length ? 
+            allPositions[0] : 
+            allPositions[currentPositionIndex]
 
 
+
+
+    React.useEffect(() => {
+        let startPositionIndex = 0
+        for (var i=0; i<=allPositions.length; i++){
+            if (allPositions[i][0].note === currentScaleDegrees[0] && i !== 0){
+                startPositionIndex = i
+                break
+            }
+        }
+        setCurrentPositionIndex(startPositionIndex)
+    }, [allPositions, currentScaleDegrees])
 
 
 
