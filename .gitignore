@@ -23,7 +23,4 @@ yarn-debug.log*
 yarn-error.log*
 
 # Firebase
-firebase.json
-.firebaserc
-.firebase/hosting.YnVpbGQ.cache
-.github/workflows/
+.firebase/
