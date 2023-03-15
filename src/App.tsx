@@ -14,7 +14,6 @@ export default function App(){
             <main className="p-3">
                 <Header />
                 <Fretboard />
-                <hr />
                 <Controls />
             </main>
 

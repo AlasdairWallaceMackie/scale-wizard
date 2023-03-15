@@ -12,17 +12,27 @@ export default function Controls(){
     const mobileView: boolean = windowHeight <= MIN_WINDOW_SIZE.height
 
 
+
+
     return (
         <div id="controls">
             {mobileView ? 
                 <>
-                    <button type="button" className="btn btn-lg btn-light" data-bs-toggle="modal" data-bs-target="#controlsModal">
+                    <button
+                        type="button"
+                        className="btn btn-lg btn-light position-absolute top-0 end-0 m-3"
+                        data-bs-toggle="modal"
+                        data-bs-target="#controlsModal"
+                    >
                         <GearIcon />
                     </button>
 
                 </>
                 :
-                <>{controlsFormElement}</>
+                <>
+                    <hr />
+                    {controlsFormElement}
+                </>
             }
 
             {/* This modal should always be rendered, otherwise the screen could be locked if the window size is changed while the modal is active, requiring a page refresh */}
